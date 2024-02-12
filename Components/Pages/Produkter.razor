@@ -1,0 +1,166 @@
+@page "/produkter"
+@rendermode InteractiveServer
+@inject ActionHandlers.ProduktHandler ProduktHandler
+
+<PageTitle>Produkter</PageTitle>
+
+<div>
+    <h3 class="float-start">Produkter</h3>
+    @if (showCreateForm) 
+    {
+        <h3 class="float-end" style="cursor: pointer;" @onclick="ToggleShowCreateForm">-</h3>
+    } else
+    {
+        <h3 class="float-end" style="cursor: pointer;" @onclick="ToggleShowCreateForm">+</h3>
+    } 
+</div>
+
+<br><br>
+
+@if (showCreateForm)
+{
+    <div class="row form-group">
+        <div class="col-6">
+            <input @bind="newName" class="m-3 form-control" type="text" placeholder="Navn">
+            <input @bind="newNote"class="m-3 form-control" type="text" placeholder="Note">
+
+            <select @bind="newPackingType" name="packingType" id="packingType" class="m-3 form-control">
+                @foreach (var type in Models.PackingTypes.Alle)
+                {   
+                    <option value="@type">@type</option>
+                }   
+            </select>
+
+            <select @bind="newButik" name="butik" id="butik" class="m-3 form-control">
+                @foreach (var butik in Models.Butikker.Alle)
+                {   
+                    <option value="@butik">@butik</option>
+                }   
+            </select>
+        </div>
+        <div class="col-6">
+            <input @bind="newPris" class="m-3 form-control" type="number" step="any" placeholder="Pris">
+            <input @bind="newGram" class="m-3 form-control" type="number" placeholder="Gram">
+            <input @bind="newKcal" class="m-3 form-control" type="number" placeholder="Kcal / 100g">
+
+            <button @onclick="Create" class="btn btn-outline-dark form-control" style="margin-left: 1em">Gem</button>
+        </div>
+    </div>
+}
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Navn</th>
+      <th scope="col">Beskrivelse</th>
+      <th scope="col">Type</th>
+      <th scope="col">Butik</th>
+      <th scope="col">Pris</th>
+      <th scope="col">Vægt</th>
+      <th scope="col">Kcal / 100g</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var produkt in produkter)
+    {
+        <tr>
+            <th scope="row">@produkt.Id</th>
+            <td>@produkt.Name</td>
+            <td>@produkt.Note</td>
+            <td>@produkt.PackingType</td>
+            <td>@produkt.Butik</td>
+            <td>@produkt.Price.ToString() kr.</td>
+            <td>@produkt.Grams g</td>
+            <td>@produkt.Calories kcal</td>
+            <td @onclick="() => DeleteProdukt(produkt)" style="cursor: pointer;">-</td>
+        </tr>
+    }
+  </tbody>
+</table>
+
+<ModalConfirm 
+    ShowConfirmation = "showConfirmDelete"
+    OnConfirmation = "HandleConfirmation"
+/>
+
+@code {
+    // State
+    private bool showCreateForm = false;
+    private bool showConfirmDelete = false;
+    private Models.Produkt? produktToDelete;
+
+    // New Produkt
+    private string newName = "";
+    private string newNote = "";
+    private Models.PackingType newPackingType = Models.PackingType.Dåse;
+    private Models.Butik newButik = Models.Butik.Rema1000;
+    private double? newPris;
+    private int? newGram;
+    private int? newKcal;
+
+    // List
+    private List<Models.Produkt> produkter = new List<Models.Produkt>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        produkter = ProduktHandler.GetAll();
+        await Task.Delay(100);
+    }
+
+    private void ToggleShowCreateForm()
+    {
+        showCreateForm = !showCreateForm;
+    }
+
+    private void Create()
+    {
+        // TODO validate input data
+        var produkt = ProduktHandler.Create(
+            newName,
+            newNote,
+            newPackingType,
+            newButik,
+            newPris ?? 0,
+            newGram ?? 0,
+            newKcal ?? 0
+        );
+
+        produkter.Add(produkt);
+
+        ToggleShowCreateForm();
+    }
+
+    private async Task DeleteProdukt(Models.Produkt produkt)
+    {
+        produktToDelete = produkt;
+        showConfirmDelete = true;
+        await Task.Delay(100);
+    }
+
+    // Event handler
+    private void HandleConfirmation(bool confirmed)
+    {
+        if (confirmed)
+        {
+            // Handle confirmation
+            if (produktToDelete != null) 
+            {
+                ProduktHandler.Delete(produktToDelete);
+                produkter.RemoveAll(p => p.Id == produktToDelete.Id);
+                produktToDelete = null;
+            }
+            
+            showConfirmDelete = false;
+        }
+        else
+        {
+            // Handle cancellation
+            showConfirmDelete = false;
+            produktToDelete = null;
+        }
+    }
+}

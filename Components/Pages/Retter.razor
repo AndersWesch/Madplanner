@@ -1,0 +1,173 @@
+@page "/retter"
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+@inject ActionHandlers.RetHandler RetHandler
+
+<PageTitle>Retter</PageTitle>
+
+<div>
+    <h3 class="float-start">Retter</h3>
+    @if (showCreateForm) 
+    {
+        <h3 class="float-end" style="cursor: pointer;" @onclick="ToggleShowCreateForm">-</h3>
+    } else
+    {
+        <h3 class="float-end" style="cursor: pointer;" @onclick="ToggleShowCreateForm">+</h3>
+    } 
+</div>
+
+<br><br>
+
+@if (showCreateForm)
+{
+    <div class="row form-group">
+        <div class="col-7">
+            <input @bind="@newName" class="m-3 form-control" type="text" placeholder="Navn">
+            <input @bind="@newDescription"class="m-3 form-control" type="text" placeholder="Beskrivelse">
+            
+            <select @bind="@newCategory" name="category" id="category" class="m-3 form-control">
+                @foreach (var category in Models.Categories.Alle)
+                {   
+                    <option value="@category">@category</option>
+                }   
+            </select>
+
+            <button @onclick="Create" style="width: 100px;" class="m-3 btn btn-outline-dark">Gem</button>
+        </div>
+
+        <div class="col-1"></div>
+
+        <div class="col-4">
+            <div class="form-check form-switch m-4">
+                <input @bind="@newVegetar" class="form-check-input" type="checkbox" role="switch" id="switchVegetar">
+                <label class="form-check-label" for="switchVegetar">Vegetarisk</label>
+            </div>
+
+            <div class="form-check form-switch m-4">
+                <input @bind="@newPorkbased" class="form-check-input" type="checkbox" role="switch" id="switchPorkbased">
+                <label class="form-check-label" for="switchPorkbased">Svinekød</label>
+            </div>
+
+            <div class="form-check form-switch m-4">
+                <input @bind="@newLeftovers" class="form-check-input" type="checkbox" role="switch" id="switchLeftovers">
+                <label class="form-check-label" for="switchLeftovers">Rester</label>
+            </div>
+
+            <div class="form-check form-switch m-4">
+                <input @bind="@newTakeaway" class="form-check-input" type="checkbox" role="switch" id="switchTakeaway">
+                <label class="form-check-label" for="switchTakeaway">Takeaway</label>
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Navn</th>
+      <th scope="col">Beskrivelse</th>
+      <th scope="col">Kategori</th>
+      <th scope="col">Vegetar</th>
+      <th scope="col">Takeaway</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var ret in retter)
+    {
+        <tr>
+            <th scope="row">@ret.Id</th>
+            <td>@ret.Name</td>
+            <td>@ret.Description</td>
+            <td>@ret.Category</td>
+            <td>@if(@ret.Vegetarian) { <span>X</span> }</td>
+            <td>@if(@ret.Takeway) { <span>X</span> }</td>
+            <td @onclick="() => DeleteRet(ret)" style="cursor: pointer;">-</td>
+        </tr>
+    }
+  </tbody>
+</table>
+
+<ModalConfirm 
+    ShowConfirmation = "showConfirmDelete"
+    OnConfirmation = "HandleConfirmation"
+/>
+
+@code {
+    // State
+    private bool showCreateForm = false;
+    private bool showConfirmDelete = false;
+    private Models.Ret? retToDelete;
+
+    // New Ret
+    private string newName = "";
+    private string newDescription = "";
+    private Models.Category newCategory = Models.Category.Andet;
+    private bool newVegetar = false;
+    private bool newPorkbased = false;
+    private bool newLeftovers = false;
+    private bool newTakeaway = false;
+
+    // List
+    private List<Models.Ret> retter = new List<Models.Ret>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        retter = RetHandler.GetAll();
+
+        await Task.Delay(100);
+    }
+
+    private void ToggleShowCreateForm()
+    {
+        showCreateForm = !showCreateForm;
+    }
+
+    private void Create()
+    {
+        var ret = RetHandler.Create(
+            newName, 
+            newDescription, 
+            newCategory, 
+            newVegetar, 
+            newPorkbased, 
+            newLeftovers, 
+            newTakeaway
+        );
+
+        retter.Add(ret);
+
+        ToggleShowCreateForm();
+    }
+
+    private async Task DeleteRet(Models.Ret ret)
+    {
+        retToDelete = ret;
+        showConfirmDelete = true;
+        await Task.Delay(100);
+    }
+
+    // Event handler
+    private void HandleConfirmation(bool confirmed)
+    {
+        if (confirmed)
+        {
+            // Handle confirmation
+            if (retToDelete != null) 
+            {
+                RetHandler.Delete(retToDelete);
+                retter.RemoveAll(r => r.Id == retToDelete.Id);
+                retToDelete = null;
+            }
+            
+            showConfirmDelete = false;
+        }
+        else
+        {
+            // Handle cancellation
+            showConfirmDelete = false;
+            retToDelete = null;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+@rendermode InteractiveServer
+
+@if (ShowConfirmation)
+{
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;">
+        <div class="p-5" style="background-color: white; width: 350px; height: 200px; border-radius: 10px">
+            <p class="text-center">@Title</p>
+
+            <button @onclick="OnCancelClicked" class="float-start btn btn-danger m-4" style="width: 75px">@CancelText</button>
+            <button @onclick="OnConfirmClicked" class="float-end btn btn-success m-4" style="width: 75px">@ConfirmText</button>
+        </div>
+    </div>
+}
+
+
+@code 
+{
+    [Parameter]
+    public string Title { get; set;} = "Er du sikker?";
+
+    [Parameter]
+    public string ConfirmText { get; set;} = "Ja";
+
+    [Parameter]
+    public string CancelText { get; set;} = "Nej";
+
+    [Parameter]
+    public bool ShowConfirmation { get; set; }
+
+    // Define event
+    [Parameter]
+    public EventCallback<bool> OnConfirmation { get; set; }
+
+    // Raise event when cancel button is clicked
+    private async Task OnCancelClicked()
+    {
+        await OnConfirmation.InvokeAsync(false);
+    }
+
+    // Raise event when confirm button is clicked
+    private async Task OnConfirmClicked()
+    {
+        await OnConfirmation.InvokeAsync(true);
+    }
+}

@@ -1,0 +1,42 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject ActionHandlers.MadplanHandler MadplanHandler
+
+<PageTitle>Madplan</PageTitle>
+
+<h1>Madplan</h1>
+
+<div class="container">
+    <div class="row mt-5">
+        @for (var i = 0; i <= retter.Count() - 1; i++)
+        {
+            <div class="col m-1 p-2" style="background-color: lightgrey; border-radius: 5px;">
+                <div style="height: 250px;">
+                    <p class="text-center" style="text-transform: uppercase;">@dage[i]</p>
+                    <p>@retter[i].Name</p>
+                    <p>@retter[i].Description</p>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary">
+                        Skift
+                    </button>
+                </div>
+            </div>
+        }
+    
+    </div>
+</div>
+
+
+@code {
+    private List<Models.Ret> retter = new List<Models.Ret>();
+    private List<Models.Dag> dage = Models.Dage.AlleDage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        retter = MadplanHandler.GetMadplan();
+
+        await Task.Delay(100);
+    }
+
+}
