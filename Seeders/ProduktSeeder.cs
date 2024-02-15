@@ -107,13 +107,16 @@ public class ProduktSeeder : ISeeder<Produkt>
 
             // Nudler
 
+            // Falafler
+
             // Frost wok blanding
 
             // Frost blomkålsris
 
             // Pakke
             new Produkt {
-                Name = "Hakket oksekød 8%-12%",
+                Name = "Hakket oksekød",
+                Note = "8%-12%",
                 PackingType = PackingType.Pakke,
                 Price = 44.95,
                 Grams = 500,

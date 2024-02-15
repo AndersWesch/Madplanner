@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Seeders;
 
 namespace Database;
 
@@ -8,6 +9,8 @@ public class DatabaseContext : DbContext
     public DbSet<Ret> Retter { get; set; }
     public DbSet<Produkt> Produkter { get; set; }
     public DbSet<Ingrediens> Ingredienser { get; set; }
+    public DbSet<Madplan> Madplaner { get; set; }
+    public DbSet<MadplanRet> MadplanRetter { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -16,6 +19,7 @@ public class DatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Ret <-> Produkt many to many relation (Ingrediens)
         modelBuilder.Entity<Ingrediens>()
         .HasKey(rp => new { rp.RetId, rp.ProduktId });
 
@@ -28,6 +32,20 @@ public class DatabaseContext : DbContext
             .HasOne(rp => rp.Produkt)
             .WithMany(p => p.Ingredienser)
             .HasForeignKey(rp => rp.ProduktId);
+
+        // Madplan <-> Ret many to many relation (MadplanRet)
+        modelBuilder.Entity<MadplanRet>()
+            .HasKey(mr => new { mr.MadplanId, mr.RetId });
+
+        modelBuilder.Entity<MadplanRet>()
+            .HasOne(mr => mr.Madplan)
+            .WithMany(m => m.MadplanRetter)
+            .HasForeignKey(mr => mr.MadplanId);
+
+        modelBuilder.Entity<MadplanRet>()
+            .HasOne(mr => mr.Ret)
+            .WithMany(r => r.MadplanRetter)
+            .HasForeignKey(mr => mr.RetId);
     }
 }
 

@@ -24,4 +24,19 @@ public class MadplanHandler
 
         return retter;
     }
+
+    public List<Ret> Switch(List<Ret> retter, int switchIndex)
+    {
+        var newRet = Repository.GetRandomRet();
+        
+        // Check if the newRet is already in the list
+        while (retter.Any(ret => ret.Id == newRet.Id))
+        {
+            newRet = Repository.GetRandomRet();
+        }
+
+        retter[switchIndex] = newRet;
+
+        return retter;
+    }
 }

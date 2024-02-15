@@ -6,11 +6,9 @@ public class RetSeeder : ISeeder<Ret>
 {
     public List<Ret> Seed()
     {
-        // Frikadeller
-        // Hotdogs
-
         // Ana frugt og grønt
         // Røvernes pita
+        // Wrap med falafel
 
         return new List<Ret> {
             // Suppe
@@ -76,7 +74,7 @@ public class RetSeeder : ISeeder<Ret>
                 Leftovers = true
             },
             new Ret {
-                Name = "blomkålsrisotto",
+                Name = "Blomkålsrisotto",
                 Description = "En risotto på blomkålsris",
                 Category = Category.Italiensk,
             },
@@ -170,6 +168,18 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Boller i karry",
                 Description = "En rigtig børn ret",
+                Category = Category.Dansk,
+                PorkBased = true
+            },
+            new Ret {
+                Name = "Hotdogs",
+                Description = "Et par hotdogs med det hele",
+                Category = Category.Dansk,
+                PorkBased = true
+            },
+            new Ret {
+                Name = "Frikadeller",
+                Description = "Frikadeller med rodfrugter eller pasta",
                 Category = Category.Dansk,
                 PorkBased = true
             },

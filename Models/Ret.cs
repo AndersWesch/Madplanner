@@ -1,31 +1,44 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace Models;
 
 public class Ret 
 {
-    [Key]
+    [Key, Column(Order = 0)]
     public int Id { get; set; }
 
-    [Required]
+    [Required, Column(Order = 1)]
     public required string Name { get; set; }
 
-    [Required]
+    [Required, Column(Order = 2)]
     public required string Description { get; set; }
 
-    [Required]
+    [Required, Column(Order = 3)]
     public required Category Category { get; set; }
 
+    [Column(Order = 4)]
     public bool Vegetarian { get; set; } = false;
 
+    [Column(Order = 5)]
     public bool PorkBased { get; set; } = false;
 
+    [Column(Order = 6)]
     public bool Leftovers { get; set; } = false;
 
+    [Column(Order = 7)]
     public bool Takeway { get; set; } = false;
 
+    [Column(Order = 8)]
+    public bool IsPublic { get; set; } = true;
+
+    [Column(Order = 9)]
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
+
     public List<Ingrediens>? Ingredienser { get; set; }
+
+    public List<MadplanRet>? MadplanRetter { get; set; }
 
     // Årstids specfikt
 

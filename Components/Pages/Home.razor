@@ -10,23 +10,21 @@
     <div class="row mt-5">
         @for (var i = 0; i <= retter.Count() - 1; i++)
         {
+            var index = i;
             <div class="col m-1 p-2" style="background-color: lightgrey; border-radius: 5px;">
-                <div style="height: 250px;">
-                    <p class="text-center" style="text-transform: uppercase;">@dage[i]</p>
-                    <p>@retter[i].Name</p>
-                    <p>@retter[i].Description</p>
+                <div style="height: 350px;">
+                    <p class="text-center mt-2" style="text-transform: uppercase; font-weight: 300;">@dage[i]</p>
+                    <hr>
+                    <h6>@retter[i].Name</h6>
+                    <i>@retter[i].Description</i>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary">
-                        Skift
-                    </button>
+                    <button @onclick="() => Switch(index)" class="btn btn-outline-dark" style="width: 80px;">Skift</button>
                 </div>
             </div>
         }
-    
     </div>
 </div>
-
 
 @code {
     private List<Models.Ret> retter = new List<Models.Ret>();
@@ -35,8 +33,12 @@
     protected override async Task OnInitializedAsync()
     {
         retter = MadplanHandler.GetMadplan();
-
+        
         await Task.Delay(100);
     }
 
+    private void Switch(int switchIndex)
+    {
+        retter = MadplanHandler.Switch(retter, switchIndex);
+    }
 }

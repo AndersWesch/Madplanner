@@ -6,10 +6,12 @@ namespace ActionHandlers;
 public class RetHandler
 {
     private readonly RetRepository Repository;
+    private readonly IngrediensRepository ingrediensRepository;
 
     public RetHandler()
     {
         Repository = new RetRepository();
+        ingrediensRepository = new IngrediensRepository();
     }
 
     public List<Ret> GetAll()
