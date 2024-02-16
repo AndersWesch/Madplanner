@@ -68,6 +68,8 @@
       <th scope="col">#</th>
       <th scope="col">Navn</th>
       <th scope="col">Beskrivelse</th>
+      <th scope="col">Pris</th>
+      <th scope="col">Kalorier</th>
       <th scope="col">Kategori</th>
       <th scope="col">Vegetar</th>
       <th scope="col">Takeaway</th>
@@ -81,6 +83,8 @@
             <th scope="row">@ret.Id</th>
             <td>@ret.Name</td>
             <td>@ret.Description</td>
+            <td>@Math.Round(@ret.Price ?? 0, 2) kr.</td>
+            <td>@Math.Round(@ret.Calories ?? 0, 2) kcal</td>
             <td>@ret.Category</td>
             <td>@if(@ret.Vegetarian) { <span>X</span> }</td>
             <td>@if(@ret.Takeaway) { <span>X</span> }</td>

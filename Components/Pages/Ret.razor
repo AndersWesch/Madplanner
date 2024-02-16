@@ -7,7 +7,7 @@
 
 @if (ret != null)
 {
-    <h3>@ret.Name @ret.Price kr. @ret.Calories kcal</h3>
+    <h3>@ret.Name @totalPrice kr. @totalCalories kcal</h3>
     <div class="row form-group">
         <div class="col-7">
             <input @bind="@ret.Name" class="m-3 form-control" type="text" placeholder="Navn">
@@ -20,7 +20,7 @@
                 }   
             </select>
 
-            <button @onclick="Update" style="width: 100px;" class="m-3 btn btn-outline-dark">Gem</button>
+            <button @onclick="UpdateRet" style="width: 100px;" class="m-3 btn btn-outline-dark">Gem</button>
         </div>
 
         <div class="col-1"></div>
@@ -55,7 +55,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Mængde i Gram</th>
+                <th scope="col">Mængde</th>
                 <th scope="col">Note</th>
                 <th scope="col">Produkt</th>
                 <th scope="col">Produkt Note</th>
@@ -74,8 +74,8 @@
                     <td>@ingrediens.Produkt.Name</td>
                     <td>@ingrediens.Produkt.Note</td>
                     <td>@ingrediens.Produkt.PackingType af @ingrediens.Produkt.Grams g</td>
-                    <td>@ingrediens.Calories kcal</td>
-                    <td>@ingrediens.Price kr.</td>                        
+                    <td>@ingrediens.CaloriesRounded kcal</td>
+                    <td>@ingrediens.PriceRounded kr.</td>                        
                     <td @onclick="() => RemoveIngrediens(ingrediens)" style="cursor: pointer; z-index: 1;">-</td>
                 </tr>
             }
@@ -91,22 +91,22 @@
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">Produkt #</th>
-            <th scope="col">Navn</th>
-            <th scope="col">Note</th>
-            <th scope="col">Type</th>
-            <th scope="col">Butik</th>
-            <th scope="col">Gram</th>
-            <th scope="col">Kcal / 100g</th>
-            <th scope="col">Pris</th>
-            <th></th>
+                <th scope="col">Navn</th>
+                <th scope="col">Note</th>
+                <th scope="col">Type</th>
+                <th scope="col">Butik</th>
+                <th scope="col">Gram</th>
+                <th scope="col">Kcal / 100g</th>
+                <th scope="col">Pris</th>
+                <th scope="col">Mængde</th>
+                <th scope="col">Note</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var produkt in produkter)
             {
                 <tr>
-                    <th scope="row">@produkt.Id</th>
                     <td>@produkt.Name</td>
                     <td>@produkt.Note</td>
                     <td>@produkt.PackingType</td>
@@ -114,6 +114,12 @@
                     <td>@produkt.Grams g</td>
                     <td>@produkt.Calories kcal</td>
                     <td>@produkt.Price kr.</td>
+                    <td>
+                        <input class="form-control" placeholder="Gram" @bind="gramValues[produkt.Id]" type="number">
+                    </td>
+                    <td>
+                        <input class="form-control" placeholder="Note" @bind="noteValues[produkt.Id]" type="text">
+                    </td>
                     <td @onclick="() => AddIngrediens(produkt)" style="cursor: pointer; z-index: 1;">+</td>
                 </tr>
             }
@@ -130,6 +136,12 @@
     private List<Models.Produkt> produkter = new List<Models.Produkt>();
     private List<Models.Ingrediens> ingredienser = new List<Models.Ingrediens>();
 
+    private double totalPrice => ingredienser.Sum(i => i.Price);
+    private double totalCalories => ingredienser.Sum(i => i.Calories);
+
+    Dictionary<int, int> gramValues = new Dictionary<int, int>();
+    Dictionary<int, string?> noteValues = new Dictionary<int, string?>();
+    
     private string searchProdukt = "";
 
     protected override void OnInitialized()
@@ -140,17 +152,20 @@
         UpdateProduktList();
     }
 
-    private void Update()
+    private void UpdateRet()
     {
         if (ret != null) {
+            ret.Price = totalPrice;
+            ret.Calories = totalCalories;
+
             ret = RetHandler.Update(ret);
         }
     }
 
     private void AddIngrediens(Models.Produkt produkt)
     {
-        var note = ""; // TODO
-        var grams = produkt.Grams; // TODO
+        var note = noteValues[produkt.Id];
+        var grams = gramValues[produkt.Id]; 
 
         if (ret != null)
         {
@@ -158,6 +173,7 @@
             ingredienser = IngrediensHandler.GetByRetId(ret.Id);
         }
 
+        UpdateRet();
         UpdateProduktList();
     }
 
@@ -165,6 +181,8 @@
     {
         IngrediensHandler.Remove(ingrediens);
         ingredienser = IngrediensHandler.GetByRetId(ret.Id);
+        
+        UpdateRet();
         UpdateProduktList();
     }
 
@@ -177,7 +195,14 @@
     private void UpdateProduktList()
     {
         var existingProduktIds =  ingredienser.Select(i => i.ProduktId).ToList();
-        produkter = ProduktHandler.GetForCreate(existingProduktIds, searchProdukt);
-        produkter = produkter.Take(5).ToList();
+        produkter = ProduktHandler.GetForCreate(existingProduktIds, searchProdukt, 5);
+
+        gramValues = new Dictionary<int, int>();
+        noteValues = new Dictionary<int, string?>();
+        foreach (var produkt in produkter)
+        {
+            gramValues[produkt.Id] = produkt.Grams;
+            noteValues[produkt.Id] = null;
+        }
     }
 }

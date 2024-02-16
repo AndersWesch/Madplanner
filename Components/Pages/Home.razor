@@ -17,6 +17,8 @@
                     <hr>
                     <h6>@retter[i].Name</h6>
                     <i>@retter[i].Description</i>
+                    <p>@Math.Round(@retter[i].Price ?? 0, 2) kr.</p>
+                    <p>@Math.Round(@retter[i].Calories ?? 0, 2) kcal</p>
                 </div>
                 <div class="text-center">
                     <button @onclick="() => Switch(index)" class="btn btn-outline-dark" style="width: 80px;">Skift</button>

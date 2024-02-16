@@ -35,11 +35,6 @@ namespace MadPlanner.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(4);
 
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Id");
-
                     b.Property<string>("Note")
                         .HasColumnType("TEXT")
                         .HasColumnOrder(3);
@@ -140,13 +135,17 @@ namespace MadPlanner.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(0);
 
+                    b.Property<double?>("Calories")
+                        .HasColumnType("REAL")
+                        .HasColumnOrder(10);
+
                     b.Property<int>("Category")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(3);
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(9);
+                        .HasColumnOrder(11);
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -169,6 +168,10 @@ namespace MadPlanner.Migrations
                     b.Property<bool>("PorkBased")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(5);
+
+                    b.Property<double?>("Price")
+                        .HasColumnType("REAL")
+                        .HasColumnOrder(9);
 
                     b.Property<bool>("Takeaway")
                         .HasColumnType("INTEGER")

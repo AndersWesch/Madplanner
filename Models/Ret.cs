@@ -34,13 +34,19 @@ public class Ret
     public bool IsPublic { get; set; } = true;
 
     [Column(Order = 9)]
+    public double? Price { get; set; }
+
+    [Column(Order = 10)]
+    public double? Calories { get; set; }
+
+    [Column(Order = 11)]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public List<Ingrediens>? Ingredienser { get; set; }
 
     public List<MadplanRet>? MadplanRetter { get; set; }
 
-    public double Price 
+    public double CalculatedPrice 
     {
         get
         {
@@ -57,7 +63,7 @@ public class Ret
         }
     }
 
-    public double Calories 
+    public double CalculatedCalories 
     {
         get
         {

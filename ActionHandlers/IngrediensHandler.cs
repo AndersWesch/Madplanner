@@ -12,7 +12,7 @@ public class IngrediensHandler
         Repository = new IngrediensRepository();
     }
 
-    public void Create(Ret ret, Produkt produkt, string note, int grams)
+    public void Create(Ret ret, Produkt produkt, string? note, int grams)
     {
         var ingrediens = new Ingrediens {
             RetId = ret.Id,

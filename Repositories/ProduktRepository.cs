@@ -4,7 +4,7 @@ namespace Repositories;
 
 public class ProduktRepository : BaseRepository<Produkt>
 {
-    public List<Produkt> GetForCreate(List<int> existingIds, string search)
+    public List<Produkt> GetForCreate(List<int> existingIds, string search, int amount)
     {
         var produkter = DbContext.Produkter.Where(p => !existingIds.Contains(p.Id));
 
@@ -15,6 +15,6 @@ public class ProduktRepository : BaseRepository<Produkt>
             produkter = produkter.Where(p => p.Name.ToLower().Contains(search) || p.Note.ToLower().Contains(search));
         }
 
-        return produkter.ToList();
+        return produkter.Take(amount).ToList();
     }
 }

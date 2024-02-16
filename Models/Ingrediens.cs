@@ -24,6 +24,9 @@ public class Ingrediens
     [Column(Order = 5)]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-    public double Price => (double)((Grams / Produkt.Grams) * Produkt.Price);
-    public double Calories => (double)((Grams / 100) * Produkt.Calories);
+    public double Price => ((double)Grams / (double)Produkt.Grams) * Produkt.Price;
+    public double Calories => (double) ((double)Grams / 100.0) * Produkt.Calories;
+
+    public double PriceRounded => Math.Round(Price, 2);
+    public double CaloriesRounded => Math.Round(Calories, 2); 
 }
