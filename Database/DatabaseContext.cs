@@ -21,7 +21,7 @@ public class DatabaseContext : DbContext
     {
         // Ret <-> Produkt many to many relation (Ingrediens)
         modelBuilder.Entity<Ingrediens>()
-        .HasKey(rp => new { rp.RetId, rp.ProduktId });
+            .HasKey(rp => new { rp.RetId, rp.ProduktId });
 
         modelBuilder.Entity<Ingrediens>()
             .HasOne(rp => rp.Ret)

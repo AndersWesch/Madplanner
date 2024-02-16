@@ -21,10 +21,10 @@ public class Produkt
     public required double Price { get; set; } = 0;
 
     [Column(Order = 5)]
-    public int? Grams { get; set; }
+    public int Grams { get; set; }
 
     [Column(Order = 6)]
-    public int? Calories { get; set; } // Per 100 grams
+    public int Calories { get; set; } // Per 100 grams
 
     [Column(Order = 7)]
     public Butik? Butik { get; set; }

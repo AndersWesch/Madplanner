@@ -1,0 +1,183 @@
+@page "/retter/{id:int}"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+@inject ActionHandlers.RetHandler RetHandler
+@inject ActionHandlers.ProduktHandler ProduktHandler
+@inject ActionHandlers.IngrediensHandler IngrediensHandler
+
+@if (ret != null)
+{
+    <h3>@ret.Name @ret.Price kr. @ret.Calories kcal</h3>
+    <div class="row form-group">
+        <div class="col-7">
+            <input @bind="@ret.Name" class="m-3 form-control" type="text" placeholder="Navn">
+            <input @bind="@ret.Description" class="m-3 form-control" type="text" placeholder="Beskrivelse">
+            
+            <select @bind="@ret.Category" name="category" id="category" class="m-3 form-control">
+                @foreach (var category in Models.Categories.Alle)
+                {   
+                    <option value="@category">@category</option>
+                }   
+            </select>
+
+            <button @onclick="Update" style="width: 100px;" class="m-3 btn btn-outline-dark">Gem</button>
+        </div>
+
+        <div class="col-1"></div>
+
+        <div class="col-4">
+            <div class="form-check form-switch m-4">
+                <input @bind="@ret.Vegetarian" class="form-check-input" type="checkbox" role="switch" id="switchVegetar">
+                <label class="form-check-label" for="switchVegetar">Vegetarisk</label>
+            </div>
+
+            <div class="form-check form-switch m-4">
+                <input @bind="@ret.PorkBased" class="form-check-input" type="checkbox" role="switch" id="switchPorkbased">
+                <label class="form-check-label" for="switchPorkbased">Svinekød</label>
+            </div>
+
+            <div class="form-check form-switch m-4">
+                <input @bind="@ret.Leftovers" class="form-check-input" type="checkbox" role="switch" id="switchLeftovers">
+                <label class="form-check-label" for="switchLeftovers">Rester</label>
+            </div>
+
+            <div class="form-check form-switch m-4">
+                <input @bind="@ret.Takeaway" class="form-check-input" type="checkbox" role="switch" id="switchTakeaway">
+                <label class="form-check-label" for="switchTakeaway">Takeaway</label>
+            </div>
+        </div>
+    </div>
+
+    <hr> 
+
+    <h5>Ingredienser</h5>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Mængde i Gram</th>
+                <th scope="col">Note</th>
+                <th scope="col">Produkt</th>
+                <th scope="col">Produkt Note</th>
+                <th scope="col">Type</th>
+                <th scope="col">Kcal</th>
+                <th scope="col">Pris</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ingrediens in ingredienser)
+            {
+                <tr>
+                    <td>@ingrediens.Grams g</td>
+                    <td>@ingrediens.Note</td>
+                    <td>@ingrediens.Produkt.Name</td>
+                    <td>@ingrediens.Produkt.Note</td>
+                    <td>@ingrediens.Produkt.PackingType af @ingrediens.Produkt.Grams g</td>
+                    <td>@ingrediens.Calories kcal</td>
+                    <td>@ingrediens.Price kr.</td>                        
+                    <td @onclick="() => RemoveIngrediens(ingrediens)" style="cursor: pointer; z-index: 1;">-</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <br>
+    <h5>Tilføj ingredienser</h5>
+    <div class="row">
+        <input @bind="@searchProdukt" @oninput="HandleSearchInputChange" class="m-3 form-control" style="width: 45%" type="text" placeholder="Søg efter produkt">
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Produkt #</th>
+            <th scope="col">Navn</th>
+            <th scope="col">Note</th>
+            <th scope="col">Type</th>
+            <th scope="col">Butik</th>
+            <th scope="col">Gram</th>
+            <th scope="col">Kcal / 100g</th>
+            <th scope="col">Pris</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produkt in produkter)
+            {
+                <tr>
+                    <th scope="row">@produkt.Id</th>
+                    <td>@produkt.Name</td>
+                    <td>@produkt.Note</td>
+                    <td>@produkt.PackingType</td>
+                    <td>@produkt.Butik</td>
+                    <td>@produkt.Grams g</td>
+                    <td>@produkt.Calories kcal</td>
+                    <td>@produkt.Price kr.</td>
+                    <td @onclick="() => AddIngrediens(produkt)" style="cursor: pointer; z-index: 1;">+</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Models.Ret? ret { get; set;}
+
+    private List<Models.Produkt> produkter = new List<Models.Produkt>();
+    private List<Models.Ingrediens> ingredienser = new List<Models.Ingrediens>();
+
+    private string searchProdukt = "";
+
+    protected override void OnInitialized()
+    {
+        ret = RetHandler.GetById(Id);
+
+        ingredienser = IngrediensHandler.GetByRetId(ret.Id);
+        UpdateProduktList();
+    }
+
+    private void Update()
+    {
+        if (ret != null) {
+            ret = RetHandler.Update(ret);
+        }
+    }
+
+    private void AddIngrediens(Models.Produkt produkt)
+    {
+        var note = ""; // TODO
+        var grams = produkt.Grams; // TODO
+
+        if (ret != null)
+        {
+            IngrediensHandler.Create(ret, produkt, note, grams);
+            ingredienser = IngrediensHandler.GetByRetId(ret.Id);
+        }
+
+        UpdateProduktList();
+    }
+
+    private void RemoveIngrediens(Models.Ingrediens ingrediens)
+    {
+        IngrediensHandler.Remove(ingrediens);
+        ingredienser = IngrediensHandler.GetByRetId(ret.Id);
+        UpdateProduktList();
+    }
+
+    private void HandleSearchInputChange(ChangeEventArgs e)
+    {
+        searchProdukt = e.Value.ToString();    
+        UpdateProduktList();
+    }
+
+    private void UpdateProduktList()
+    {
+        var existingProduktIds =  ingredienser.Select(i => i.ProduktId).ToList();
+        produkter = ProduktHandler.GetForCreate(existingProduktIds, searchProdukt);
+        produkter = produkter.Take(5).ToList();
+    }
+}

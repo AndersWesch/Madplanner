@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Models;
 using Seeders;
 
@@ -15,5 +16,20 @@ public class RetRepository : BaseRepository<Ret>
 
         // Return the randomly selected Ret entity
         return allRetter[randomIndex];
+    }
+
+    public Ret GetWithIngredienser(int id)
+    {
+        var ret = DbContext.Retter
+            .Include(r => r.Ingredienser)
+            .ThenInclude(i => i.Produkt)
+            .FirstOrDefault(r => r.Id == id);
+        
+        if (ret == null)
+        {
+            throw new Exception("Could not find Ret with id: " + id);
+        }
+
+        return ret;
     }
 }

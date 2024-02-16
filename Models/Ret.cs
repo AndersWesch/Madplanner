@@ -28,7 +28,7 @@ public class Ret
     public bool Leftovers { get; set; } = false;
 
     [Column(Order = 7)]
-    public bool Takeway { get; set; } = false;
+    public bool Takeaway { get; set; } = false;
 
     [Column(Order = 8)]
     public bool IsPublic { get; set; } = true;
@@ -39,6 +39,40 @@ public class Ret
     public List<Ingrediens>? Ingredienser { get; set; }
 
     public List<MadplanRet>? MadplanRetter { get; set; }
+
+    public double Price 
+    {
+        get
+        {
+            if (Ingredienser == null)
+                return 0;
+
+            double totalPrice = 0;
+            foreach (var ingrediens in Ingredienser)
+            {
+                totalPrice += ingrediens.Price;
+            }
+
+            return Math.Round(totalPrice, 2);
+        }
+    }
+
+    public double Calories 
+    {
+        get
+        {
+            if (Ingredienser == null)
+                return 0;
+
+            double totalCalories = 0;
+            foreach (var ingrediens in Ingredienser)
+            {
+                totalCalories += ingrediens.Calories;
+            }
+
+            return Math.Round(totalCalories, 2);
+        }
+    }
 
     // Årstids specfikt
 

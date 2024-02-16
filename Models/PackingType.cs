@@ -4,6 +4,7 @@ public class PackingTypes
 {
     public static List<PackingType> Alle => 
         new List<PackingType> {
+            PackingType.Karton,
             PackingType.Dåse,
             PackingType.Enhed,
             PackingType.Flaske,
@@ -16,6 +17,7 @@ public class PackingTypes
 
 public enum PackingType 
 {
+    Karton,
     Dåse,
     Enhed,
     Flaske,

@@ -29,9 +29,16 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         return entity;
     }
 
-    public TEntity? GetById(int id)
+    public TEntity GetById(int id)
     {
-        return DbContext.Set<TEntity>().Find(id);
+        var entity = DbContext.Set<TEntity>().Find(id);
+
+        if (entity == null)
+        {
+            throw new Exception($"Could not find {typeof(TEntity).Name} by id: {id}");
+        }
+
+        return entity;
     }
 
     public List<TEntity> GetAll()

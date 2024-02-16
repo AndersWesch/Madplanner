@@ -17,6 +17,11 @@ public class ProduktHandler
         return Repository.GetAll();
     }
 
+    public List<Produkt> GetForCreate(List<int> existingIds, string search)
+    {
+        return Repository.GetForCreate(existingIds, search);
+    }
+
     public Produkt Create(string name, string note, PackingType packingType, Butik butik, double price, int grams, int calories)
     {
         var produkt = new Produkt{

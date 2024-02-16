@@ -10,8 +10,9 @@ Uncomment Seed() in Repositories
 ### Run Application
     dotnet watch
 
+### TODO
+ - Setup Git
 
 ### Features
  - Switch log to count amount of times a Ret has been switched
  - Auth
- 

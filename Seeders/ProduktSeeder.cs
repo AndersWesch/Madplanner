@@ -50,12 +50,23 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 162,
                 Butik = Butik.Rema1000
             },
-
-            // Majs
-
-            // Asparges
-
-            // Glas
+            new Produkt {
+                Name = "Majs",
+                PackingType = PackingType.Dåse,
+                Price = 7.50,
+                Grams = 300,
+                Calories = 79,
+                Butik = Butik.Rema1000
+            },
+            new Produkt {
+                Name = "Aspargessnitter",
+                PackingType = PackingType.Dåse,
+                Price = 12.95,
+                Grams = 430,
+                Calories = 11,
+                Butik = Butik.Rema1000
+            },
+            
             new Produkt {
                 Name = "Salsa Medium",
                 Note = "Tex Mex Salsasauce Medium",
@@ -66,7 +77,24 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Butik = Butik.Rema1000
             },
 
-            // Karrry pasta
+            new Produkt {
+                Name = "Tortillas",
+                Note = "Tex Mex Fuldkorns Tortillas",
+                PackingType = PackingType.Pose,
+                Price = 12.25,
+                Grams = 370,
+                Calories = 299,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Rød Karrypasta",
+                PackingType = PackingType.Glas,
+                Price = 10.95,
+                Grams = 110,
+                Calories = 222,
+                Butik = Butik.Rema1000
+            },
 
             // Pose 
             new Produkt {
@@ -89,29 +117,165 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Butik = Butik.Rema1000
             },
 
-            // Gode pasta
+            new Produkt {
+                Name = "Suppehorn",
+                Note = "Pasta horn",
+                PackingType = PackingType.Pose,
+                Price = 9.5,
+                Grams = 500,
+                Calories = 347,
+                Butik = Butik.Rema1000
+            },
 
-            // Tortelini
+            new Produkt {
+                Name = "Spaghetti",
+                Note = "Økologisk Fuldkorns Spaghetti Pasta",
+                PackingType = PackingType.Pose,
+                Price = 8.95,
+                Grams = 500,
+                Calories = 350,
+                Butik = Butik.Rema1000
+            },
 
-            // Lasagne plader
+            new Produkt {
+                Name = "Tortiglioni",
+                Note = "De Cecco - gode pasta",
+                PackingType = PackingType.Pose,
+                Price = 21.5,
+                Grams = 500,
+                Calories = 351,
+                Butik = Butik.Lovbjerg
+            },
 
-            // Bechamel
+            new Produkt {
+                Name = "Tortellini",
+                Note = "Ricotta og spinat (TODO tjek kcal og pris)",
+                PackingType = PackingType.Karton,
+                Price = 24.95,
+                Grams = 500,
+                Calories = 400,
+                Butik = Butik.Coop365
+            },
 
-            // Pitabrød
+            new Produkt {
+                Name = "Lasagneplader",
+                Note = "Fuldkorns lasagneplader",
+                PackingType = PackingType.Pakke,
+                Price = 16.95,
+                Grams = 500,
+                Calories = 338,
+                Butik = Butik.Rema1000
+            },
 
-            // Røde linser
+            new Produkt {
+                Name = "Bucatini",
+                Note = "Makaroni Pasta",
+                PackingType = PackingType.Pose,
+                Price = 9.95,
+                Grams = 500,
+                Calories = 347,
+                Butik = Butik.Rema1000
+            },
 
-            // Tartelet skaller
+            new Produkt {
+                Name = "Mornaysauce",
+                Note = "Bechamel / oste sauce",
+                PackingType = PackingType.Karton,
+                Price = 17.95,
+                Grams = 500,
+                Calories = 140,
+                Butik = Butik.Rema1000
+            },
 
-            // Burger boller
+            new Produkt {
+                Name = "Tomatsuppe",
+                Note = "Karolines Køkken Tomatsuppe",
+                PackingType = PackingType.Karton,
+                Price = 30.95,
+                Grams = 1000,
+                Calories = 50,
+                Butik = Butik.Rema1000
+            },
 
-            // Nudler
+            new Produkt {
+                Name = "Pitabrød",
+                Note = "Fuldkorns pitabrød (TODO tjek kcal)",
+                PackingType = PackingType.Pose,
+                Price = 5.95,
+                Grams = 320,
+                Calories = 237,
+                Butik = Butik.Rema1000
+            },
 
-            // Falafler
+            new Produkt {
+                Name = "Røde Linser",
+                Note = "Røde Split Linser",
+                PackingType = PackingType.Pose,
+                Price = 16.95,
+                Grams = 400,
+                Calories = 346,
+                Butik = Butik.Rema1000
+            },
 
-            // Frost wok blanding
+            new Produkt {
+                Name = "Tartelet skaller",
+                Note = "Humlum Luxus tarteletter",
+                PackingType = PackingType.Pose,
+                Price = 14.75,
+                Grams = 225,
+                Calories = 570,
+                Butik = Butik.Rema1000
+            },
+            
+            new Produkt {
+                Name = "Burgerboller",
+                Note = "Fuldkorns burgerboller",
+                PackingType = PackingType.Pose,
+                Price = 20.5,
+                Grams = 320,
+                Calories = 260,
+                Butik = Butik.Rema1000
+            },
 
-            // Frost blomkålsris
+            new Produkt {
+                Name = "Nudler",
+                Note = "Egg noodles",
+                PackingType = PackingType.Pose,
+                Price = 6.95,
+                Grams = 250,
+                Calories = 364,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Falafel",
+                Note = "Urtekram falafler",
+                PackingType = PackingType.Pose,
+                Price = 59.95,
+                Grams = 500,
+                Calories = 321,
+                Butik = Butik.Lovbjerg
+            },
+
+            new Produkt {
+                Name = "Wok blanding",
+                Note = "Wok blanding fra frost",
+                PackingType = PackingType.Pose,
+                Price = 13.95,
+                Grams = 400,
+                Calories = 37,
+                Butik = Butik.Rema1000
+            },
+            
+            new Produkt {
+                Name = "Blomkålsris",
+                Note = "Økologiske Blomkålsris fra frost",
+                PackingType = PackingType.Pose,
+                Price = 13.95,
+                Grams = 350,
+                Calories = 28,
+                Butik = Butik.Rema1000
+            },
 
             // Pakke
             new Produkt {
@@ -141,10 +305,46 @@ public class ProduktSeeder : ISeeder<Produkt>
             // Serano
 
             // Æg
+            
+            new Produkt {
+                Name = "Minimælk",
+                Note = "0,4% Fedt",
+                PackingType = PackingType.Karton,
+                Price = 10.95,
+                Grams = 1000,
+                Calories = 36,
+                Butik = Butik.Rema1000
+            },
 
-            // Mælk
+            new Produkt {
+                Name = "Pesto",
+                Note = "Rød Pesto",
+                PackingType = PackingType.Glas,
+                Price = 6.80,
+                Grams = 130,
+                Calories = 410,
+                Butik = Butik.Rema1000
+            },
 
-            // Pesto
+            new Produkt {
+                Name = "Pesto",
+                Note = "Grøn Pesto",
+                PackingType = PackingType.Glas,
+                Price = 6.80,
+                Grams = 130,
+                Calories = 410,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Pesto",
+                Note = "Grøn Pesto med Basilikum",
+                PackingType = PackingType.Pakke,
+                Price = 16.95,
+                Grams = 130,
+                Calories = 497,
+                Butik = Butik.Rema1000
+            },
 
             // Grøntsager
             new Produkt {
@@ -156,6 +356,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 40,
                 Butik = Butik.Rema1000
             },
+
             new Produkt {
                 Name = "Rødløg",
                 Note = "Økologisk",
@@ -165,6 +366,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 44,
                 Butik = Butik.Rema1000
             },
+
             new Produkt {
                 Name = "Gulerødder",
                 Note = "Økologisk",

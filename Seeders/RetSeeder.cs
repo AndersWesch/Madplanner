@@ -18,6 +18,14 @@ public class RetSeeder : ISeeder<Ret>
                 Category = Category.Suppe,
                 Vegetarian = true,
             },
+
+            new Ret {
+                Name = "Tomatsuppe",
+                Description = "Tomatsuppe fra Karolines Køkken",
+                Category = Category.Suppe,
+                Vegetarian = true,
+            },
+
             new Ret {
                 Name = "Kartoffel porre suppe",
                 Description = "Grøntsagssuppe god med bacon",

@@ -35,8 +35,8 @@ namespace MadPlanner.Migrations
                     Note = table.Column<string>(type: "TEXT", nullable: true),
                     PackingType = table.Column<int>(type: "INTEGER", nullable: false),
                     Price = table.Column<double>(type: "REAL", nullable: false),
-                    Grams = table.Column<int>(type: "INTEGER", nullable: true),
-                    Calories = table.Column<int>(type: "INTEGER", nullable: true),
+                    Grams = table.Column<int>(type: "INTEGER", nullable: false),
+                    Calories = table.Column<int>(type: "INTEGER", nullable: false),
                     Butik = table.Column<int>(type: "INTEGER", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
@@ -57,7 +57,7 @@ namespace MadPlanner.Migrations
                     Vegetarian = table.Column<bool>(type: "INTEGER", nullable: false),
                     PorkBased = table.Column<bool>(type: "INTEGER", nullable: false),
                     Leftovers = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Takeway = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Takeaway = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsPublic = table.Column<bool>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
@@ -72,10 +72,10 @@ namespace MadPlanner.Migrations
                 {
                     RetId = table.Column<int>(type: "INTEGER", nullable: false),
                     ProduktId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Id = table.Column<int>(type: "INTEGER", nullable: false),
                     Note = table.Column<string>(type: "TEXT", nullable: true),
+                    Grams = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Grams = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -20,22 +20,29 @@ namespace MadPlanner.Migrations
             modelBuilder.Entity("Models.Ingrediens", b =>
                 {
                     b.Property<int>("RetId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(1);
 
                     b.Property<int>("ProduktId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(2);
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(5);
 
                     b.Property<int>("Grams")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(4);
 
                     b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Id");
 
                     b.Property<string>("Note")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(3);
 
                     b.HasKey("RetId", "ProduktId");
 
@@ -92,7 +99,7 @@ namespace MadPlanner.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(7);
 
-                    b.Property<int?>("Calories")
+                    b.Property<int>("Calories")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(6);
 
@@ -100,7 +107,7 @@ namespace MadPlanner.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnOrder(8);
 
-                    b.Property<int?>("Grams")
+                    b.Property<int>("Grams")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(5);
 
@@ -163,7 +170,7 @@ namespace MadPlanner.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(5);
 
-                    b.Property<bool>("Takeway")
+                    b.Property<bool>("Takeaway")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(7);
 

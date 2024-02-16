@@ -2,6 +2,7 @@
 @rendermode InteractiveServer
 @attribute [StreamRendering]
 @inject ActionHandlers.RetHandler RetHandler
+@inject NavigationManager NavigationManager
 
 <PageTitle>Retter</PageTitle>
 
@@ -76,20 +77,21 @@
   <tbody>
     @foreach(var ret in retter)
     {
-        <tr>
+        <tr @onclick="() => RedirectToRet(ret.Id)" style="cursor: pointer;">
             <th scope="row">@ret.Id</th>
             <td>@ret.Name</td>
             <td>@ret.Description</td>
             <td>@ret.Category</td>
             <td>@if(@ret.Vegetarian) { <span>X</span> }</td>
-            <td>@if(@ret.Takeway) { <span>X</span> }</td>
-            <td @onclick="() => DeleteRet(ret)" style="cursor: pointer;">-</td>
+            <td>@if(@ret.Takeaway) { <span>X</span> }</td>
+            <td @onclick:stopPropagation @onclick="() => DeleteRet(ret)" style="cursor: pointer; z-index: 1;">-</td>
         </tr>
     }
   </tbody>
 </table>
 
 <ModalConfirm 
+    Title = "Vil du slette ret?" 
     ShowConfirmation = "showConfirmDelete"
     OnConfirmation = "HandleConfirmation"
 />
@@ -169,5 +171,10 @@
             showConfirmDelete = false;
             retToDelete = null;
         }
+    }
+
+    private void RedirectToRet(int id)
+    {
+        NavigationManager.NavigateTo("/retter/"+id);
     }
 }

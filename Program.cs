@@ -11,6 +11,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddSingleton<RetHandler>();
 builder.Services.AddSingleton<ProduktHandler>();
 builder.Services.AddSingleton<MadplanHandler>();
+builder.Services.AddSingleton<IngrediensHandler>();
 
 var app = builder.Build();
 

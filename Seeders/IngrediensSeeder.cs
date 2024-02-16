@@ -7,15 +7,15 @@ public class IngrediensSeeder : ISeeder<Ingrediens>
 {    
     public List<Ingrediens> Seed()
     {
-        // var DbContext = new DatabaseContext();
-        // var bolognese = DbContext.Retter.Where(r => r.Name == "Pasta Bolognese").FirstOrDefault();
+        //var DbContext = new DatabaseContext();
+        //var bolognese = DbContext.Retter.Where(r => r.Name == "Pasta Bolognese").FirstOrDefault();
 
         return new List<Ingrediens>{
-            new Ingrediens {
-                RetId = 7,
-                ProduktId = 7,
-                Grams = 200
-            }
+            //new Ingrediens {
+            //    RetId = bolognese.Id,
+            //    ProduktId = 7,
+            //    Grams = 200
+            //}
         };
 
         /**

@@ -19,6 +19,16 @@ public class RetHandler
         return Repository.GetAll();
     }
 
+    public Ret GetById(int id)
+    {
+        return Repository.GetById(id);
+    }
+
+    public Ret Update(Ret ret)
+    {
+        return Repository.Update(ret);
+    }
+
     public Ret Create(string name, string description, Category category, bool vegetarian, bool porkBased, bool leftovers, bool takeaway)
     {
         var ret = new Ret{
@@ -28,7 +38,7 @@ public class RetHandler
             Vegetarian = vegetarian,
             PorkBased = porkBased,
             Leftovers = leftovers,
-            Takeway = takeaway
+            Takeaway = takeaway
         };
 
         ret = Repository.Create(ret);
