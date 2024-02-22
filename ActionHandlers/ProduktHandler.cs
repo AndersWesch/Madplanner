@@ -1,4 +1,6 @@
 using Models;
+using Rema1000;
+using Rema1000.ReponseModels;
 using Repositories;
 
 namespace ActionHandlers;
@@ -6,6 +8,7 @@ namespace ActionHandlers;
 public class ProduktHandler
 {
     private readonly ProduktRepository Repository;
+    // private readonly Rema1000Api RemaApi;
 
     public ProduktHandler()
     {
@@ -22,7 +25,7 @@ public class ProduktHandler
         return Repository.GetForCreate(existingIds, search, amount);
     }
 
-    public Produkt Create(string name, string note, PackingType packingType, Butik butik, double price, int grams, int calories)
+    public Produkt Create(string name, string note, PackingType packingType, Butik butik, double price, int grams, int calories, int? varenummer)
     {
         var produkt = new Produkt{
             Name = name,
@@ -31,7 +34,8 @@ public class ProduktHandler
             Price = price,
             Grams = grams,
             Calories = calories,
-            Butik = butik
+            Butik = butik,
+            Varenummer = varenummer
         };
 
         produkt = Repository.Create(produkt);
@@ -42,5 +46,11 @@ public class ProduktHandler
     public void Delete(Produkt produkt)
     {
         Repository.Delete(produkt);
+    }
+
+    public async Task<RemaResponse>? GetProduktInfo(int varenummer)
+    {
+        var RemaApi = new Rema1000Api();
+        return await RemaApi.GetProduktInfo(varenummer);
     }
 }

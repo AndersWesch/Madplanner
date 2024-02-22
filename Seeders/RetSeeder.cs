@@ -6,9 +6,8 @@ public class RetSeeder : ISeeder<Ret>
 {
     public List<Ret> Seed()
     {
-        // Ana frugt og grønt
-        // Røvernes pita
-        // Wrap med falafel
+        // Minestronesuppe
+        // Karry suppe
 
         return new List<Ret> {
             // Suppe
@@ -24,6 +23,7 @@ public class RetSeeder : ISeeder<Ret>
                 Description = "Tomatsuppe fra Karolines Køkken",
                 Category = Category.Suppe,
                 Vegetarian = true,
+                SeedKey = "tomatsuppe"
             },
 
             new Ret {
@@ -49,7 +49,8 @@ public class RetSeeder : ISeeder<Ret>
                 Name = "Rød Pasta",
                 Description = "Rød Pasta med salcicia og rosmarin",
                 Category = Category.Italiensk,
-                PorkBased = true
+                PorkBased = true,
+                SeedKey = "rodpasta"
             },
             new Ret {
                 Name = "La Carbonara ",
@@ -60,6 +61,12 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Pasta Bolognese",
                 Description = "Klassisk pasta og kødsovs",
+                Category = Category.Italiensk,
+                Leftovers = true
+            },
+            new Ret {
+                Name = "Beluga Bolognese",
+                Description = "Kødsovs med beluga",
                 Category = Category.Italiensk,
                 Leftovers = true
             },
@@ -89,8 +96,18 @@ public class RetSeeder : ISeeder<Ret>
 
             // Mexikansk
             new Ret {
-                Name = "Tortillas",
-                Description = "Tortillas pandekager med diverse",
+                Name = "Tortillas med kylling",
+                Description = "Tortillas pandekager (wrap) med diverse",
+                Category = Category.Mexikansk
+            },
+            new Ret {
+                Name = "Tortillas med falafel",
+                Description = "Tortillas pandekager (wrap) med diverse",
+                Category = Category.Mexikansk
+            },
+            new Ret {
+                Name = "Tortillas med okse",
+                Description = "Tortillas pandekager (wrap) med diverse",
                 Category = Category.Mexikansk
             },
             new Ret {
@@ -130,8 +147,8 @@ public class RetSeeder : ISeeder<Ret>
 
             // Salat
             new Ret {
-                Name = "Tortelini salat",
-                Description = "Salat med tortelini og spinat",
+                Name = "Tortellini salat",
+                Description = "Salat med tortellini og spinat",
                 Category = Category.Salat
             },
             new Ret {
@@ -155,6 +172,12 @@ public class RetSeeder : ISeeder<Ret>
                 Name = "Pitabrød med Kylling",
                 Description = "Simpelt pitabrød med kylling og diverse grønt",
                 Category = Category.Andet
+            },
+
+            new Ret {
+                Name = "Tortellini og pølser",
+                Description = "Børnefavorit",
+                Category = Category.Salat
             },
 
             // Dansk
@@ -225,6 +248,22 @@ public class RetSeeder : ISeeder<Ret>
                 Name = "Burger",
                 Description = "Burger og fritter",
                 Category = Category.Amerikansk
+            },
+
+            // Takeaway
+            new Ret {
+                Name = "Ana",
+                Description = "Frugt og Grønt",
+                Category = Category.Salat,
+                Vegetarian = true,
+                Takeaway = true,
+            },
+
+            new Ret {
+                Name = "De Fyrretyve Røvere",
+                Description = "Pitabrød",
+                Category = Category.Andet,
+                Takeaway = true,
             }
         };
     }

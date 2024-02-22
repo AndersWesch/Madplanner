@@ -46,6 +46,8 @@ public class Ret
 
     public List<MadplanRet>? MadplanRetter { get; set; }
 
+    public string? SeedKey { get; set; }
+
     public double CalculatedPrice 
     {
         get

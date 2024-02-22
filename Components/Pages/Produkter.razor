@@ -37,13 +37,14 @@
                     <option value="@butik">@butik</option>
                 }   
             </select>
+
+            <button @onclick="Create" class="btn btn-outline-dark form-control" style="margin-left: 1em">Gem</button>
         </div>
         <div class="col-6">
             <input @bind="newPris" class="m-3 form-control" type="number" step="any" placeholder="Pris">
             <input @bind="newGram" class="m-3 form-control" type="number" placeholder="Gram">
             <input @bind="newKcal" class="m-3 form-control" type="number" placeholder="Kcal / 100g">
-
-            <button @onclick="Create" class="btn btn-outline-dark form-control" style="margin-left: 1em">Gem</button>
+            <input @bind="newVarenummer" @oninput="GetProduktInfo" class="m-3 form-control" type="number" placeholder="Varenummer">
         </div>
     </div>
 }
@@ -92,6 +93,7 @@
     private bool showCreateForm = false;
     private bool showConfirmDelete = false;
     private Models.Produkt? produktToDelete;
+    private Rema1000.ReponseModels.RemaResponse remaResponse;
 
     // New Produkt
     private string newName = "";
@@ -101,6 +103,7 @@
     private double? newPris;
     private int? newGram;
     private int? newKcal;
+    private int? newVarenummer;
 
     // List
     private List<Models.Produkt> produkter = new List<Models.Produkt>();
@@ -108,6 +111,7 @@
     protected override async Task OnInitializedAsync()
     {
         produkter = ProduktHandler.GetAll();
+
         await Task.Delay(100);
     }
 
@@ -126,7 +130,8 @@
             newButik,
             newPris ?? 0,
             newGram ?? 0,
-            newKcal ?? 0
+            newKcal ?? 0,
+            newVarenummer 
         );
 
         produkter.Add(produkt);
@@ -161,6 +166,45 @@
             // Handle cancellation
             showConfirmDelete = false;
             produktToDelete = null;
+        }
+    }
+
+    private async void GetProduktInfo(ChangeEventArgs e)
+    {
+        if (e.Value == null) {
+            return;
+        }
+
+        int varenummer;
+        if (int.TryParse(e.Value.ToString(), out varenummer))
+        {
+            Console.WriteLine("Varenummer: " + varenummer);
+            remaResponse = await ProduktHandler.GetProduktInfo(varenummer);
+
+            if (remaResponse != null)
+            {
+                Console.WriteLine("Name " + remaResponse.Name);
+
+                if (newName == "") {
+                    newName = remaResponse.Name;
+                }
+                
+                if (newNote == "") {
+                    newNote = remaResponse.Underline;
+                }
+
+                if (newPris == null) {
+                    newPris = remaResponse.NormalPrice;
+                }
+                
+                if (newGram == null) {
+                    newGram = remaResponse.Grams;
+                }
+                
+                if (newKcal == null) {
+                    newKcal = remaResponse.Calories;
+                }                
+            }
         }
     }
 }

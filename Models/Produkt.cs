@@ -30,7 +30,12 @@ public class Produkt
     public Butik? Butik { get; set; }
 
     [Column(Order = 8)]
+    public int? Varenummer { get; set; }
+
+    [Column(Order = 9)]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+    public string? SeedKey { get; set; }
 
     public List<Ingrediens>? Ingredienser { get; set; }
 }

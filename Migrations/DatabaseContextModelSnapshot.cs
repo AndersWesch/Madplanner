@@ -15,7 +15,7 @@ namespace MadPlanner.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.2");
 
             modelBuilder.Entity("Models.Ingrediens", b =>
                 {
@@ -100,7 +100,7 @@ namespace MadPlanner.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT")
-                        .HasColumnOrder(8);
+                        .HasColumnOrder(9);
 
                     b.Property<int>("Grams")
                         .HasColumnType("INTEGER")
@@ -122,6 +122,13 @@ namespace MadPlanner.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("REAL")
                         .HasColumnOrder(4);
+
+                    b.Property<string>("SeedKey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("Varenummer")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(8);
 
                     b.HasKey("Id");
 
@@ -172,6 +179,9 @@ namespace MadPlanner.Migrations
                     b.Property<double?>("Price")
                         .HasColumnType("REAL")
                         .HasColumnOrder(9);
+
+                    b.Property<string>("SeedKey")
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("Takeaway")
                         .HasColumnType("INTEGER")

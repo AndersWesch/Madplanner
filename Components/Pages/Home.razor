@@ -17,10 +17,15 @@
                     <hr>
                     <h6>@retter[i].Name</h6>
                     <i>@retter[i].Description</i>
-                    <p>@Math.Round(@retter[i].Price ?? 0, 2) kr.</p>
-                    <p>@Math.Round(@retter[i].Calories ?? 0, 2) kcal</p>
                 </div>
-                <div class="text-center">
+                <div class="m-3 mb-4">
+                    <span class="float-start p-2 text-center" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@retter[i].Price ?? 0, 2) kr.</span>
+                    <span class="float-end p-2" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@retter[i].Calories ?? 0, 2) kcal</span>
+                </div>
+
+                <br>
+
+                <div class="text-center mt-4">
                     <button @onclick="() => Switch(index)" class="btn btn-outline-dark" style="width: 80px;">Skift</button>
                 </div>
             </div>

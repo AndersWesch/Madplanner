@@ -15,7 +15,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 7.5,
                 Grams = 400,
                 Calories = 24,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 108334,
             },
             new Produkt {
                 Name = "Kidney bønner i chilisauce",
@@ -23,7 +24,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 7.95,
                 Grams = 410,
                 Calories = 100,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 107912,
             },
             new Produkt {
                 Name = "Kikærter Økologisk",
@@ -31,7 +33,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 7.5,
                 Grams = 400,
                 Calories = 117,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 100042,
             },
             new Produkt {
                 Name = "Tomat Pasta",
@@ -40,7 +43,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 4.95,
                 Grams = 140,
                 Calories = 86,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 111408,
             },
             new Produkt {
                 Name = "Kokosmælk",
@@ -48,7 +52,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 7.75,
                 Grams = 400,
                 Calories = 162,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 120171,
             },
             new Produkt {
                 Name = "Majs",
@@ -56,7 +61,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 7.50,
                 Grams = 300,
                 Calories = 79,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 100425,
             },
             new Produkt {
                 Name = "Aspargessnitter",
@@ -64,7 +70,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 12.95,
                 Grams = 430,
                 Calories = 11,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 100166,
             },
             
             new Produkt {
@@ -74,7 +81,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 9.75,
                 Grams = 315,
                 Calories = 53,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 102810,
             },
 
             new Produkt {
@@ -84,7 +92,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 12.25,
                 Grams = 370,
                 Calories = 299,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 102831,
             },
 
             new Produkt {
@@ -93,7 +102,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 10.95,
                 Grams = 110,
                 Calories = 222,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 100831,
             },
 
             // Pose 
@@ -104,7 +114,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 14.95,
                 Grams = 1000,
                 Calories = 357,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 98164,
             },
 
             new Produkt {
@@ -114,7 +125,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 11.95,
                 Grams = 500,
                 Calories = 350,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 90330,
             },
 
             new Produkt {
@@ -124,7 +136,9 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 9.5,
                 Grams = 500,
                 Calories = 347,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                SeedKey = "suppehorn",
+                Varenummer = 90814,
             },
 
             new Produkt {
@@ -134,7 +148,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 8.95,
                 Grams = 500,
                 Calories = 350,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 90335,
             },
 
             new Produkt {
@@ -194,7 +209,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 30.95,
                 Grams = 1000,
                 Calories = 50,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                SeedKey = "karoline-tomat"
             },
 
             new Produkt {
@@ -288,24 +304,115 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Butik = Butik.Rema1000
             },
 
-            // Hakket gris
+            new Produkt {
+                Name = "Hakket grisekød",
+                Note = "8%-12%",
+                PackingType = PackingType.Pakke,
+                Price = 36.95,
+                Grams = 400,
+                Calories = 168,
+                Butik = Butik.Rema1000
+            },
 
-            // Kyllinge bryst
+            new Produkt {
+                Name = "Hakket kyllingekød",
+                Note = "7%-10%",
+                PackingType = PackingType.Pakke,
+                Price = 34.95,
+                Grams = 400,
+                Calories = 155,
+                Butik = Butik.Rema1000
+            },
 
-            // Madlavningsfløde
-
-            // Tortilla
-
-            // Pizza bund
-
-            // Mascarpone
-
-            // Mozarella
-
-            // Serano
-
-            // Æg
+            new Produkt {
+                Name = "Kyllingebrystfilet",
+                Note = "Karolines Madlavningsfløde 8%",
+                PackingType = PackingType.Pakke,
+                Price = 34.95,
+                Grams = 280,
+                Calories = 95,
+                Butik = Butik.Rema1000
+            },
             
+            new Produkt {
+                Name = "Madlavningsfløde",
+                Note = "Karolines Madlavningsfløde 8%",
+                PackingType = PackingType.Karton,
+                Price = 12.75,
+                Grams = 250,
+                Calories = 115,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Pizzabund",
+                Note = "Surdejs pizzabund",
+                PackingType = PackingType.Pose,
+                Price = 19.95,
+                Grams = 200,
+                Calories = 249,
+                Butik = Butik.Netto
+            },
+
+            new Produkt {
+                Name = "Mascarpone",
+                PackingType = PackingType.Pakke,
+                Price = 19.95,
+                Grams = 250,
+                Calories = 411,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Mozarella",
+                Note = "Mozarella ost i blok",
+                PackingType = PackingType.Pose,
+                Price = 8.5,
+                Grams = 125,
+                Calories = 251,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Grana Padano",
+                Note = "Paramsan ost i blok",
+                PackingType = PackingType.Pakke,
+                Price = 33.95,
+                Grams = 200,
+                Calories = 398,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Serano skinke",
+                Note = "Hola! Spansk Serano",
+                PackingType = PackingType.Pakke,
+                Price = 12.95,
+                Grams = 60,
+                Calories = 232,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Æg",
+                Note = "Skrabeæg",
+                PackingType = PackingType.Pakke,
+                Price = 24.85,
+                Grams = 350,
+                Calories = 141,
+                Butik = Butik.Rema1000
+            },
+
+            new Produkt {
+                Name = "Salciccia",
+                Note = "Italiensk pølse",
+                PackingType = PackingType.Pakke,
+                Price = 49.95,
+                Grams = 200,
+                Calories = 258,
+                Butik = Butik.Lovbjerg
+            },
+
             new Produkt {
                 Name = "Minimælk",
                 Note = "0,4% Fedt",
@@ -377,17 +484,65 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Butik = Butik.Rema1000
             },
 
-            // Kartofler
+            new Produkt {
+                Name = "Kartofler",
+                Note = "Økologisk",
+                PackingType = PackingType.Pose,
+                Price = 12.00,
+                Grams = 1000,
+                Calories = 82,
+                Butik = Butik.Rema1000
+            },
 
-            // Spidskål
+            new Produkt {
+                Name = "Spidskål",
+                Note = "Økologisk",
+                PackingType = PackingType.Stk,
+                Price = 16.00,
+                Grams = 1000,
+                Calories = 27,
+                Butik = Butik.Rema1000
+            },
 
-            // Agurk 
+            new Produkt {
+                Name = "Agruk",
+                Note = "Økologisk",
+                PackingType = PackingType.Stk,
+                Price = 9.00,
+                Grams = 300,
+                Calories = 11,
+                Butik = Butik.Rema1000
+            },
 
-            // Tomater
+            new Produkt {
+                Name = "Tomater",
+                Note = "Økologisk",
+                PackingType = PackingType.Pakke,
+                Price = 19.00,
+                Grams = 400,
+                Calories = 20,
+                Butik = Butik.Rema1000
+            },
 
-            // Avocado
+            new Produkt {
+                Name = "Avocado",
+                Note = "Modne Avocadoer - Guacamole",
+                PackingType = PackingType.Pakke,
+                Price = 16.50,
+                Grams = 300,
+                Calories = 160,
+                Butik = Butik.Rema1000
+            },
 
-            // Spinat
+            new Produkt {
+                Name = "Spinat",
+                Note = "Frisk baby spinat",
+                PackingType = PackingType.Pose,
+                Price = 12.00,
+                Grams = 1000,
+                Calories = 82,
+                Butik = Butik.Rema1000
+            },
         };
     }
 }
