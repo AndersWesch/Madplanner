@@ -42,11 +42,12 @@ public class Ret
     [Column(Order = 11)]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
+
     public List<Ingrediens>? Ingredienser { get; set; }
 
-    public List<MadplanRet>? MadplanRetter { get; set; }
-
     public string? SeedKey { get; set; }
+
+    public List<MadplanRet> MadplanRetter { get; set; } // Navigation property for the join table
 
     public double CalculatedPrice 
     {

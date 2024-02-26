@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MadPlanner.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240218193805_S")]
-    partial class S
+    [Migration("20240225195959_baseTables")]
+    partial class baseTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,10 +29,6 @@ namespace MadPlanner.Migrations
                     b.Property<int>("ProduktId")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(2);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT")
-                        .HasColumnOrder(5);
 
                     b.Property<int>("Grams")
                         .HasColumnType("INTEGER")
@@ -53,13 +49,19 @@ namespace MadPlanner.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(0);
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Week")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(1);
+
+                    b.Property<int>("Year")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(2);
 
                     b.HasKey("Id");
 
@@ -72,12 +74,16 @@ namespace MadPlanner.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(0);
 
-                    b.Property<int>("RetId")
+                    b.Property<int?>("RetId")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(1);
 
-                    b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(2);
 
                     b.HasKey("MadplanId", "RetId");
 

@@ -33,7 +33,7 @@ public class DatabaseContext : DbContext
             .WithMany(p => p.Ingredienser)
             .HasForeignKey(rp => rp.ProduktId);
 
-        // Madplan <-> Ret many to many relation (MadplanRet)
+        // Ret <-> Madplan many to many relation (MadplanRet)
         modelBuilder.Entity<MadplanRet>()
             .HasKey(mr => new { mr.MadplanId, mr.RetId });
 

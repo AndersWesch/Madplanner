@@ -4,48 +4,121 @@
 
 <PageTitle>Madplan</PageTitle>
 
-<h3>Madplan</h3>
+<div>
+    <h3 class="float-start">Madplan</h3>
+    <h4 class="float-end">@GetTotalPrice().ToString() kr.</h4>
+    <br><br>
+    <p class="float-start" style="font-style: italic;">@currentMadplan.Year Uge @currentMadplan.Week</p>
+    <p class="float-end">@GetTotalCalories().ToString() kcal.</p>
+</div>
+
 
 <div class="container">
     <div class="row mt-5">
-        @for (var i = 0; i <= retter.Count() - 1; i++)
+        @for (var i = 0; i <= currentMadplan.MadplanRetter.Count() - 1; i++)
         {
             var index = i;
             <div class="col m-1 p-2" style="background-color: lightgrey; border-radius: 5px;">
                 <div style="height: 350px;">
                     <p class="text-center mt-2" style="text-transform: uppercase; font-weight: 300;">@dage[i]</p>
                     <hr>
-                    <h6>@retter[i].Name</h6>
-                    <i>@retter[i].Description</i>
+                    @if(@currentMadplan != null)
+                    {
+                        <h6>@currentMadplan.MadplanRetter[i].Ret.Name</h6>
+                        <i>@currentMadplan.MadplanRetter[i].Ret.Description</i>
+                    }
                 </div>
                 <div class="m-3 mb-4">
-                    <span class="float-start p-2 text-center" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@retter[i].Price ?? 0, 2) kr.</span>
-                    <span class="float-end p-2" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@retter[i].Calories ?? 0, 2) kcal</span>
+                    <span class="float-start p-2 text-center" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@currentMadplan.MadplanRetter[i].Ret.Price ?? 0, 2) kr.</span>
+                    <span class="float-end p-2" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@currentMadplan.MadplanRetter[i].Ret.Calories ?? 0, 2) kcal</span>
                 </div>
 
                 <br>
 
                 <div class="text-center mt-4">
-                    <button @onclick="() => Switch(index)" class="btn btn-outline-dark" style="width: 80px;">Skift</button>
+                    @if(@currentMadplan != null)
+                    {
+                        <button @onclick="() => Switch(currentMadplan.MadplanRetter[index])" class="btn btn-outline-dark" style="width: 80px;">Skift</button>
+                    }
                 </div>
             </div>
         }
     </div>
 </div>
 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Uge</th>
+      <th scope="col">År</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var plan in madplaner)
+    {
+        var selected = plan.Id == currentMadplan.Id ? "background-color: lightgray;" : "";
+        <tr @onclick="() => SelectMadplan(plan)" style="cursor: pointer; @selected">
+            <th scope="row">@plan.Id</th>
+            <td>@plan.Week</td>
+            <td>@plan.Year</td>
+            <th></th>
+        </tr>
+    }
+  </tbody>
+</table>
+
 @code {
-    private List<Models.Ret> retter = new List<Models.Ret>();
+    private Models.Madplan currentMadplan;
+    private List<Models.Madplan> madplaner = new List<Models.Madplan>();
     private List<Models.Dag> dage = Models.Dage.AlleDage;
 
     protected override async Task OnInitializedAsync()
     {
-        retter = MadplanHandler.GetMadplan();
+        madplaner = MadplanHandler.GetAllMadplaner();
+        currentMadplan = MadplanHandler.GetCurrentMadplan();
         
-        await Task.Delay(100);
+        await Task.Delay(200);
     }
 
-    private void Switch(int switchIndex)
+    private void Switch(Models.MadplanRet madplanRet)
     {
-        retter = MadplanHandler.Switch(retter, switchIndex);
+        currentMadplan = MadplanHandler.Switch(currentMadplan, madplanRet);
+    }
+
+    private void SelectMadplan(Models.Madplan madplan)
+    {
+        currentMadplan = MadplanHandler.GetMadplan(madplan.Week, madplan.Year);
+    }
+
+    private double GetTotalPrice()
+    {
+        double totalPrice = 0;
+
+        foreach (var madplanRet in currentMadplan.MadplanRetter)
+        {
+            if (madplanRet.Ret.Price != null)
+            {
+                totalPrice += (double)madplanRet.Ret.Price;
+            }
+        }
+
+        return Math.Round(totalPrice, 2);
+    }
+
+    private double GetTotalCalories()
+    {
+        double totalCalories = 0;
+
+        foreach (var madplanRet in currentMadplan.MadplanRetter)
+        {
+            if (madplanRet.Ret.Calories != null)
+            {
+                totalCalories += (double) madplanRet.Ret.Calories;
+            }
+        }
+
+        return Math.Round(totalCalories, 2);
     }
 }

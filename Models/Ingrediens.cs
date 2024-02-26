@@ -22,7 +22,7 @@ public class Ingrediens
     public required int Grams { get; set; }
 
     [Column(Order = 5)]
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; } = DateTime.Now;
 
     public double Price => ((double)Grams / (double)Produkt.Grams) * Produkt.Price;
     public double Calories => (double) ((double)Grams / 100.0) * Produkt.Calories;

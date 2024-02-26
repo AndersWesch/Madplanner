@@ -13,6 +13,7 @@ public class RemaResponse
         get {
             string[] parts = Underline.Split(' ');
 
+            // Parse string to int
             if (int.TryParse(parts[0], out int number))
             {
                 return number;

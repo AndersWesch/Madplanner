@@ -54,6 +54,8 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
 
     private void Seed()
     {
+        Console.WriteLine("Seeding data");
+
         var produktSeeder = new ProduktSeeder();
         var produkter = produktSeeder.Seed();
         DbContext.Produkter.AddRange(produkter);
@@ -67,6 +69,10 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         var ingrediensSeeder = new IngrediensSeeder();
         var ingredienser = ingrediensSeeder.Seed();
         DbContext.Ingredienser.AddRange(ingredienser);
+
+        var madplanSeeder = new MadplanSeeder(retter.Take(5).ToList());
+        var madplaner = madplanSeeder.Seed();
+        DbContext.Madplaner.AddRange(madplaner);
 
         DbContext.SaveChanges();
     }
