@@ -82,6 +82,11 @@ public class MadplanHandler
         return madplan;
     }
 
+    public void DeleteMadplan(Madplan madplan)
+    {
+        madplanRepository.Delete(madplan);
+    }
+
     private Madplan CreateMadplan(int week, int year)
     {
         var madplan = new Madplan {

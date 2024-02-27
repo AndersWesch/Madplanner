@@ -19,28 +19,27 @@
         {
             var index = i;
             <div class="col m-1 p-2" style="background-color: lightgrey; border-radius: 5px;">
-                <div style="height: 350px;">
-                    <p class="text-center mt-2" style="text-transform: uppercase; font-weight: 300;">@dage[i]</p>
-                    <hr>
-                    @if(@currentMadplan != null)
-                    {
+                @if(currentMadplan != null && currentMadplan.MadplanRetter != null && currentMadplan.MadplanRetter[i].Ret != null)
+                {
+                    <div style="height: 350px;">
+                        <p class="text-center mt-2" style="text-transform: uppercase; font-weight: 300;">@dage[i]</p>
+                        <hr>
+                        
                         <h6>@currentMadplan.MadplanRetter[i].Ret.Name</h6>
                         <i>@currentMadplan.MadplanRetter[i].Ret.Description</i>
-                    }
-                </div>
-                <div class="m-3 mb-4">
-                    <span class="float-start p-2 text-center" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@currentMadplan.MadplanRetter[i].Ret.Price ?? 0, 2) kr.</span>
-                    <span class="float-end p-2" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@currentMadplan.MadplanRetter[i].Ret.Calories ?? 0, 2) kcal</span>
-                </div>
+                    </div>
+                    <div class="m-3 mb-4">
+                        <span class="float-start p-2 text-center" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@currentMadplan.MadplanRetter[i].Ret.Price ?? 0, 2) kr.</span>
+                        <span class="float-end p-2" style="background-color: dimgrey; color: white; border-radius: 10px;">@Math.Round(@currentMadplan.MadplanRetter[i].Ret.Calories ?? 0, 2) kcal</span>
+                    </div>
+        
+                    <br>
 
-                <br>
-
-                <div class="text-center mt-4">
-                    @if(@currentMadplan != null)
-                    {
+                    <div class="text-center mt-4">
+                        
                         <button @onclick="() => Switch(currentMadplan.MadplanRetter[index])" class="btn btn-outline-dark" style="width: 80px;">Skift</button>
-                    }
-                </div>
+                    </div>
+                }
             </div>
         }
     </div>
@@ -63,13 +62,21 @@
             <th scope="row">@plan.Id</th>
             <td>@plan.Week</td>
             <td>@plan.Year</td>
-            <th></th>
+            <th @onclick:stopPropagation @onclick="() => ShowConfirmDelete(plan)" style="z-index: 1;">-</th>
         </tr>
     }
   </tbody>
 </table>
 
+<ModalConfirm 
+    Title = "Vil du slette madplan?" 
+    ShowConfirmation = "showConfirmDelete"
+    OnConfirmation = "DeleteMadplan"
+/>
+
 @code {
+    private bool showConfirmDelete = false;
+    private Models.Madplan? madplanToDelete;
     private Models.Madplan currentMadplan;
     private List<Models.Madplan> madplaner = new List<Models.Madplan>();
     private List<Models.Dag> dage = Models.Dage.AlleDage;
@@ -92,13 +99,41 @@
         currentMadplan = MadplanHandler.GetMadplan(madplan.Week, madplan.Year);
     }
 
+    // EventHandler
+    private void DeleteMadplan(bool confirmed)
+    {
+        if (confirmed)
+        {
+            if (madplanToDelete != null)
+            {
+                MadplanHandler.DeleteMadplan(madplanToDelete);
+            }
+
+            madplaner = MadplanHandler.GetAllMadplaner();
+        }
+        
+        showConfirmDelete = false;
+        madplanToDelete = null;
+    }
+
+    private async void ShowConfirmDelete(Models.Madplan madplan)
+    {
+        madplanToDelete = madplan;
+        showConfirmDelete = true;
+        await Task.Delay(100);
+    }
+
     private double GetTotalPrice()
     {
         double totalPrice = 0;
 
+        if (currentMadplan == null || currentMadplan.MadplanRetter == null) {
+            return 0;
+        }
+
         foreach (var madplanRet in currentMadplan.MadplanRetter)
         {
-            if (madplanRet.Ret.Price != null)
+            if (madplanRet != null && madplanRet.Ret != null && madplanRet.Ret.Price != null)
             {
                 totalPrice += (double)madplanRet.Ret.Price;
             }
@@ -111,9 +146,13 @@
     {
         double totalCalories = 0;
 
+        if (currentMadplan == null || currentMadplan.MadplanRetter == null) {
+            return 0;
+        }
+
         foreach (var madplanRet in currentMadplan.MadplanRetter)
         {
-            if (madplanRet.Ret.Calories != null)
+            if (madplanRet != null && madplanRet.Ret != null && madplanRet.Ret.Calories != null)
             {
                 totalCalories += (double) madplanRet.Ret.Calories;
             }
