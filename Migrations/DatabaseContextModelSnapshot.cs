@@ -112,6 +112,10 @@ namespace MadPlanner.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(5);
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(14);
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -131,6 +135,22 @@ namespace MadPlanner.Migrations
 
                     b.Property<string>("SeedKey")
                         .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("TilbudDataUpdatedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(13);
+
+                    b.Property<DateTime?>("TilbudEndingAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(12);
+
+                    b.Property<double?>("TilbudPrice")
+                        .HasColumnType("REAL")
+                        .HasColumnOrder(10);
+
+                    b.Property<DateTime?>("TilbudStartingAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(11);
 
                     b.Property<int?>("Varenummer")
                         .HasColumnType("INTEGER")

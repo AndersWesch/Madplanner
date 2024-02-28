@@ -2,7 +2,7 @@ namespace Rema1000.ReponseModels;
 
 public class PriceModel
 {
-    public decimal Price { get; set; }
+    public double Price { get; set; }
     public bool IsCampaign { get; set; }
     public string? StartingAt { get; set; }
     public string? EndingAt { get; set; }

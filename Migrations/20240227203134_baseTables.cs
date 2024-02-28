@@ -41,6 +41,11 @@ namespace MadPlanner.Migrations
                     Butik = table.Column<int>(type: "INTEGER", nullable: true),
                     Varenummer = table.Column<int>(type: "INTEGER", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    TilbudPrice = table.Column<double>(type: "REAL", nullable: true),
+                    TilbudStartingAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    TilbudEndingAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    TilbudDataUpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
                     SeedKey = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>

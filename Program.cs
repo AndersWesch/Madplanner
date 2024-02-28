@@ -12,6 +12,7 @@ builder.Services.AddSingleton<RetHandler>();
 builder.Services.AddSingleton<ProduktHandler>();
 builder.Services.AddSingleton<MadplanHandler>();
 builder.Services.AddSingleton<IngrediensHandler>();
+builder.Services.AddSingleton<TilbudHandler>();
 
 var app = builder.Build();
 

@@ -60,6 +60,7 @@
       <th scope="col">Type</th>
       <th scope="col">Butik</th>
       <th scope="col">Pris</th>
+      <th scope="col">Tilbud</th>
       <th scope="col">Vægt</th>
       <th scope="col">Kcal / 100g</th>
       <th></th>
@@ -75,6 +76,14 @@
             <td>@produkt.PackingType</td>
             <td>@produkt.Butik</td>
             <td>@produkt.Price.ToString() kr.</td>
+            @if (produkt.TilbudPrice != null)
+            {
+                <td style="color: red;">@produkt.TilbudPrice.ToString() kr.</td>
+            } else
+            {
+                <td></td>
+            }
+            
             <td>@produkt.Grams g</td>
             <td>@produkt.Calories kcal</td>
             <td @onclick="() => DeleteProdukt(produkt)" style="cursor: pointer;">-</td>

@@ -1,6 +1,7 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 @inject ActionHandlers.MadplanHandler MadplanHandler
+@inject ActionHandlers.TilbudHandler TilbudHandler
 
 <PageTitle>Madplan</PageTitle>
 
@@ -51,6 +52,8 @@
       <th scope="col">#</th>
       <th scope="col">Uge</th>
       <th scope="col">År</th>
+      <th scope="col">Pris</th>
+      <th scope="col">Kcal</th>
       <th></th>
     </tr>
   </thead>
@@ -62,6 +65,8 @@
             <th scope="row">@plan.Id</th>
             <td>@plan.Week</td>
             <td>@plan.Year</td>
+            <td>TODO</td>
+            <td>TODO</td>
             <th @onclick:stopPropagation @onclick="() => ShowConfirmDelete(plan)" style="z-index: 1;">-</th>
         </tr>
     }
@@ -85,8 +90,11 @@
     {
         madplaner = MadplanHandler.GetAllMadplaner();
         currentMadplan = MadplanHandler.GetCurrentMadplan();
+
+        // Update the tilbud data when entering page
+        // TilbudHandler.UpdateRemaTilbudAsync();
         
-        await Task.Delay(200);
+        await Task.Delay(100);
     }
 
     private void Switch(Models.MadplanRet madplanRet)

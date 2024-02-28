@@ -8,7 +8,6 @@ namespace ActionHandlers;
 public class ProduktHandler
 {
     private readonly ProduktRepository Repository;
-    // private readonly Rema1000Api RemaApi;
 
     public ProduktHandler()
     {

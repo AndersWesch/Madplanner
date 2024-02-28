@@ -46,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9SZXR0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/anderswesch/code/MadPlanner/Components/Pages/Tilbud.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9UaWxidWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/anderswesch/code/MadPlanner/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

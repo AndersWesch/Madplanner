@@ -35,6 +35,21 @@ public class Produkt
     [Column(Order = 9)]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
+    [Column(Order = 10)]
+    public double? TilbudPrice { get; set; }
+
+    [Column(Order = 11)]
+    public DateTime? TilbudStartingAt { get; set; }
+
+    [Column(Order = 12)]
+    public DateTime? TilbudEndingAt { get; set; }
+
+    [Column(Order = 13)]
+    public DateTime? TilbudDataUpdatedAt { get; set; }
+
+    [Column(Order = 14)]
+    public string? ImageUrl { get; set; }
+
     public string? SeedKey { get; set; }
 
     public List<Ingrediens>? Ingredienser { get; set; }

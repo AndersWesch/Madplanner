@@ -6,8 +6,39 @@ public class ProduktSeeder : ISeeder<Produkt>
 {
     public List<Produkt> Seed()
     {
+        // Rugbrød
+
         return new List<Produkt> {
-            // Dåser
+            new Produkt {
+                Name = "Solsikkerugbrød",
+                Note = "",
+                PackingType = PackingType.Pose,
+                Price = 25.5,
+                Grams = 950,
+                Calories = 234,
+                Butik = Butik.Rema1000,
+                Varenummer = 61508,
+            },
+            new Produkt {
+                Name = "Blåbær",
+                Note = "Frosne blåbær",
+                PackingType = PackingType.Pose,
+                Price = 14.95,
+                Grams = 250,
+                Calories = 69,
+                Butik = Butik.Rema1000,
+                Varenummer = 40825,
+            },
+            new Produkt {
+                Name = "Ricotta",
+                Note = "Ambrosi",
+                PackingType = PackingType.Pakke,
+                Price = 10.5,
+                Grams = 250,
+                Calories = 97,
+                Butik = Butik.Rema1000,
+                Varenummer = 451619,
+            },
             new Produkt {
                 Name = "Hakkede tomater",
                 Note = "Med basilikum og oregano",
@@ -179,7 +210,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 16.95,
                 Grams = 500,
                 Calories = 338,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 90348,
             },
 
             new Produkt {
@@ -189,7 +221,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 9.95,
                 Grams = 500,
                 Calories = 347,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 90363,
             },
 
             new Produkt {
@@ -199,7 +232,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 17.95,
                 Grams = 500,
                 Calories = 140,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 29210,
             },
 
             new Produkt {
@@ -210,6 +244,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Grams = 1000,
                 Calories = 50,
                 Butik = Butik.Rema1000,
+                Varenummer = 29253,
                 SeedKey = "karoline-tomat"
             },
 
@@ -220,7 +255,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 5.95,
                 Grams = 320,
                 Calories = 237,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
             },
 
             new Produkt {
@@ -230,7 +265,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 16.95,
                 Grams = 400,
                 Calories = 346,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 91398,
             },
 
             new Produkt {
@@ -240,7 +276,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 14.75,
                 Grams = 225,
                 Calories = 570,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 73011,
             },
             
             new Produkt {
@@ -250,7 +287,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 20.5,
                 Grams = 320,
                 Calories = 260,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 66035,
             },
 
             new Produkt {
@@ -260,7 +298,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 6.95,
                 Grams = 250,
                 Calories = 364,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 96652,
             },
 
             new Produkt {
@@ -280,7 +319,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 13.95,
                 Grams = 400,
                 Calories = 37,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 40768,
             },
             
             new Produkt {
@@ -290,7 +330,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 13.95,
                 Grams = 350,
                 Calories = 28,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 40840,
             },
 
             // Pakke
@@ -301,7 +342,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 44.95,
                 Grams = 500,
                 Calories = 172,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 400171,
             },
 
             new Produkt {
@@ -311,7 +353,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 36.95,
                 Grams = 400,
                 Calories = 168,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 401001,
             },
 
             new Produkt {
@@ -321,7 +364,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 34.95,
                 Grams = 400,
                 Calories = 155,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 404899,
             },
 
             new Produkt {
@@ -331,7 +375,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 34.95,
                 Grams = 280,
                 Calories = 95,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 404997,
             },
             
             new Produkt {
@@ -341,7 +386,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 12.75,
                 Grams = 250,
                 Calories = 115,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 21878,
             },
 
             new Produkt {
@@ -360,7 +406,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 19.95,
                 Grams = 250,
                 Calories = 411,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 24197,
             },
 
             new Produkt {
@@ -370,7 +417,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 8.5,
                 Grams = 125,
                 Calories = 251,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 452016,
             },
 
             new Produkt {
@@ -380,7 +428,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 33.95,
                 Grams = 200,
                 Calories = 398,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 455418,
             },
 
             new Produkt {
@@ -390,7 +439,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 12.95,
                 Grams = 60,
                 Calories = 232,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 411307,
             },
 
             new Produkt {
@@ -400,7 +450,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 24.85,
                 Grams = 350,
                 Calories = 141,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 224233,
             },
 
             new Produkt {
@@ -420,7 +471,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 10.95,
                 Grams = 1000,
                 Calories = 36,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 21464,
             },
 
             new Produkt {
@@ -430,7 +482,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 6.80,
                 Grams = 130,
                 Calories = 410,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 108648,
             },
 
             new Produkt {
@@ -440,17 +493,19 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 6.80,
                 Grams = 130,
                 Calories = 410,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 108649,
             },
 
             new Produkt {
                 Name = "Pesto",
-                Note = "Grøn Pesto med Basilikum",
+                Note = "Grøn Pesto med Basilikum (den gode)",
                 PackingType = PackingType.Pakke,
                 Price = 16.95,
                 Grams = 130,
                 Calories = 497,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 413313,
             },
 
             // Grøntsager
@@ -461,7 +516,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 11.00,
                 Grams = 750,
                 Calories = 40,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 306967,
             },
 
             new Produkt {
@@ -471,7 +527,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 12.00,
                 Grams = 500,
                 Calories = 44,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 306954,
             },
 
             new Produkt {
@@ -481,7 +538,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 14.00,
                 Grams = 1000,
                 Calories = 41,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 306570,
             },
 
             new Produkt {
@@ -491,7 +549,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 12.00,
                 Grams = 1000,
                 Calories = 82,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 306928,
             },
 
             new Produkt {
@@ -501,17 +560,19 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 16.00,
                 Grams = 1000,
                 Calories = 27,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 306618,
             },
 
             new Produkt {
-                Name = "Agruk",
+                Name = "Agurk",
                 Note = "Økologisk",
                 PackingType = PackingType.Stk,
                 Price = 9.00,
                 Grams = 300,
                 Calories = 11,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 306076,
             },
 
             new Produkt {
@@ -521,7 +582,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 19.00,
                 Grams = 400,
                 Calories = 20,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 306175,
             },
 
             new Produkt {
@@ -531,7 +593,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 16.50,
                 Grams = 300,
                 Calories = 160,
-                Butik = Butik.Rema1000
+                Butik = Butik.Rema1000,
+                Varenummer = 305415,
             },
 
             new Produkt {
@@ -539,9 +602,10 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Note = "Frisk baby spinat",
                 PackingType = PackingType.Pose,
                 Price = 12.00,
-                Grams = 1000,
-                Calories = 82,
-                Butik = Butik.Rema1000
+                Grams = 75,
+                Calories = 23,
+                Butik = Butik.Rema1000,
+                Varenummer = 306423,
             },
         };
     }

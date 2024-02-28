@@ -1,0 +1,49 @@
+@page "/tilbud"
+@rendermode InteractiveServer
+@using Extensions;
+@inject ActionHandlers.TilbudHandler TilbudHandler
+
+<PageTitle>Tilbud</PageTitle>
+
+<h3>Tilbud</h3>
+
+@foreach (var chunk in tilbud.ChunkBy(3)) 
+{
+    <div class="row">
+        @if (tilbud != null)
+        {
+            @foreach (var produkt in chunk)
+            {
+                <div class="col-md-4">
+                    <div class="card" style="height: 190px; margin-bottom: 20px;">
+                        <div class="card-body">
+                            <h5 class="card-title">@produkt.Name</h5>
+                            <p class="card-text" style="margin-bottom: 10px;">@produkt.Note</p> 
+
+                            <div class="row">
+                                <div class="col" style="padding-top: 14px;">
+                                    <span class="card-text">Tilbud: <span style="color: red;">@produkt.TilbudPrice kr.</span></span> <br>
+                                    <span class="card-text">Normal: @produkt.Price kr.</span>
+                                </div>
+                                <div class="col">
+                                    <img src="@produkt.ImageUrl" style="max-height: 80px; max-width: 120px;">
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+
+@code 
+{
+    private List<Models.Produkt> tilbud = new List<Models.Produkt>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        tilbud = await TilbudHandler.GetCurrentTilbud();
+    }
+}

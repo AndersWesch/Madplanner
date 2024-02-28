@@ -50,7 +50,7 @@ public class MadplanHandler
 
     public List<Madplan> GetAllMadplaner()
     {
-        return madplanRepository.GetAll();
+        return madplanRepository.GetAll().OrderByDescending(mp => mp.Week).ToList();
     }
 
     public Madplan Switch(Madplan madplan, MadplanRet madplanRet)
