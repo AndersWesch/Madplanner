@@ -92,6 +92,16 @@ public class MadplanHandler
         return madplanRepository.Update(madplan);
     }
 
+    public Madplan CreateMadplan()
+    {
+        var currentMadplaner = madplanRepository.GetAll();
+        var latestMadplan = currentMadplaner.OrderByDescending(m => m.Week).First();
+
+        var newMadplan = CreateMadplan(latestMadplan.Week+1, latestMadplan.Year);
+
+        return newMadplan;
+    }
+
     public void UpdateMadplanRet(MadplanRet madplanRet)
     {
         madplanRepository.UpdateMadplanRet(madplanRet);
@@ -105,6 +115,8 @@ public class MadplanHandler
         };
 
         madplan = madplanRepository.Create(madplan);
+        double totalPrice = 0;
+        double totalCalories = 0;
 
         for (var i = 0; i < 5; i++)
         {
@@ -116,8 +128,23 @@ public class MadplanHandler
                 Order = i+1
             };
 
+            if (ret.Price != null)
+            {
+                totalPrice += (double)ret.Price;
+            }
+
+            if (ret.Calories != null)
+            {
+                totalCalories += (double)ret.Calories;
+            }
+            
+
             madplanRepository.AddRet(madplanRet);
         }
+
+        madplan.Price = Math.Round(totalPrice, 2);
+        madplan.Calories = Math.Round(totalCalories, 2);
+        madplan = madplanRepository.Update(madplan);
 
         return madplan;
     }

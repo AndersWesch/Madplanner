@@ -9,6 +9,7 @@ public class RetSeeder : ISeeder<Ret>
         // Minestronesuppe
         // Karry suppe
         // Retter på grillen
+        // Kyllingelår med rodfrugter i ovnen
 
         return new List<Ret> {
             // Suppe

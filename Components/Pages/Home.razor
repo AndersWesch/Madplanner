@@ -94,7 +94,7 @@
       <th scope="col">År</th>
       <th scope="col">Pris</th>
       <th scope="col">Kcal</th>
-      <th></th>
+      <th @onclick="() => CreateMadplan()" style="cursor: pointer;">+</th>
     </tr>
   </thead>
   <tbody>
@@ -144,6 +144,12 @@
         currentMadplan = MadplanHandler.Switch(currentMadplan, madplanRet);
     }
 
+    private void CreateMadplan()
+    {
+        MadplanHandler.CreateMadplan();
+        madplaner = MadplanHandler.GetAllMadplaner();
+    }
+
     private void SelectMadplan(Models.Madplan madplan)
     {
         currentMadplan = MadplanHandler.GetMadplan(madplan.Week, madplan.Year);
@@ -161,6 +167,8 @@
 
             madplaner = MadplanHandler.GetAllMadplaner();
         }
+        
+        currentMadplan = MadplanHandler.GetCurrentMadplan();
         
         showConfirmDelete = false;
         madplanToDelete = null;

@@ -12,7 +12,6 @@
 
 ### TODO
  - Setup Git
- - Create Madplan (button)
  - Delete old tilbud
  - Fix uppercase rema response
 
