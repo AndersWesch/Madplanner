@@ -5,7 +5,7 @@
     dotnet ef database update 
 
 ### Seeding Data
-Uncomment Seed() in Repositories
+    Seeds data if there is none.
 
 ### Run Application
     dotnet watch
@@ -14,11 +14,11 @@ Uncomment Seed() in Repositories
  - Setup Git
  - Create Madplan (button)
  - Delete old tilbud
+ - Fix uppercase rema response
 
 ### Features
  - Switch log to count amount of times a Ret has been switched
  - Auth
- - Remove Ret from madplan (empty Ret)
 
 Rema 1000 API
 https://cphapp.rema1000.dk/api/v3/products/404899?include=declaration,nutrition_info,declaration,warnings

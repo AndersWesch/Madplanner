@@ -12,6 +12,8 @@ public class MadplanRepository : BaseRepository<Madplan>
             .Where(m => m.Year == year)
             .Include(m => m.MadplanRetter)
                 .ThenInclude(mr => mr.Ret)
+                .ThenInclude(r => r.Ingredienser)
+                .ThenInclude(i => i.Produkt)
             .FirstOrDefault();
         
         if (madplan != null)
@@ -20,6 +22,11 @@ public class MadplanRepository : BaseRepository<Madplan>
         }
         
         return madplan;
+    }
+
+    public void UpdateMadplanRet(MadplanRet madplanRet)
+    {
+        DbContext.SaveChanges();
     }
 
     public void AddRet(MadplanRet madplanRet)

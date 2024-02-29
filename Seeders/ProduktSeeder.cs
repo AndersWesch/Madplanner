@@ -6,8 +6,6 @@ public class ProduktSeeder : ISeeder<Produkt>
 {
     public List<Produkt> Seed()
     {
-        // Rugbrød
-
         return new List<Produkt> {
             new Produkt {
                 Name = "Solsikkerugbrød",

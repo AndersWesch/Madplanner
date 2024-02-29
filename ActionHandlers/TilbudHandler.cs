@@ -37,8 +37,6 @@ public class TilbudHandler
             }
 
             var remaResponse = await RemaApi.GetProduktInfo((int)produkt.Varenummer);
-            
-            Console.WriteLine(produkt.Name + " " + produkt.Varenummer);
 
             if (remaResponse == null)
             {
@@ -50,7 +48,8 @@ public class TilbudHandler
 
             if (tilbudPris != null)
             {
-                Console.WriteLine("Tilbud " + tilbudPris.Price);
+                Console.WriteLine(produkt.Name + " " + produkt.Varenummer);
+                Console.WriteLine("Tilbud på "+ produkt.Name + " til  " + tilbudPris.Price);
 
                 produkt.TilbudPrice = tilbudPris.Price;
                 //produkt.TilbudStartingAt = tilbudPris.StartingAt;

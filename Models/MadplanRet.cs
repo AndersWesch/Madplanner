@@ -19,5 +19,8 @@ public class MadplanRet
     [Column(Order = 2)]
     public int Order { get; set; }
 
+    [Column(Order = 3)]
+    public bool Removed { get; set; } = false;
+
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 }

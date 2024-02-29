@@ -16,6 +16,12 @@ public class Madplan
     [Column(Order = 2)]
     public int Year { get; set; }
 
+    [Column(Order = 3)]
+    public double Price { get; set; } = 0;
+
+    [Column(Order = 4)]
+    public double Calories { get; set; } = 0;
+
     public List<MadplanRet> MadplanRetter { get; set; } // Navigation property for the join table
     
 
