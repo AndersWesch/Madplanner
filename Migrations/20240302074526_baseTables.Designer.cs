@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MadPlanner.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240227203134_baseTables")]
+    [Migration("20240302074526_baseTables")]
     partial class baseTables
     {
         /// <inheritdoc />
@@ -52,8 +52,16 @@ namespace MadPlanner.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(0);
 
+                    b.Property<double>("Calories")
+                        .HasColumnType("REAL")
+                        .HasColumnOrder(4);
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL")
+                        .HasColumnOrder(3);
 
                     b.Property<int>("Week")
                         .HasColumnType("INTEGER")
@@ -84,6 +92,10 @@ namespace MadPlanner.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(2);
+
+                    b.Property<bool>("Removed")
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(3);
 
                     b.HasKey("MadplanId", "RetId");
 

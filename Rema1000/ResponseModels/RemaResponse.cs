@@ -46,9 +46,12 @@ public class RemaResponse
         }
     }
 
-    public RemaResponse(dynamic data) {
-        Name = data.name;
-        Underline = data.underline;
+    public RemaResponse(dynamic data) 
+    {
+        Name = ConvertToTitleCase((string)data.name);
+        
+        string underline = data.underline;
+        Underline = underline.ToLower();
         
         Prices = new List<PriceModel>();
         foreach (var priceData in data.prices)
@@ -67,5 +70,20 @@ public class RemaResponse
         {
             Images.Add(new ImageUrls(imageData));
         }        
+    }
+
+    private string ConvertToTitleCase(string input)
+    {
+        // Check if the input is null or empty
+        if (string.IsNullOrEmpty(input))
+            return input;
+
+        // Convert the string to lowercase
+        string lowercase = input.ToLower();
+
+        // Capitalize the first letter
+        string result = char.ToUpper(lowercase[0]) + lowercase.Substring(1);
+
+        return result;
     }
 }

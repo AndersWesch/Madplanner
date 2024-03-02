@@ -16,6 +16,7 @@ public class TilbudHandler
 
     public async Task<List<Produkt>> GetCurrentTilbud()
     {
+        // Do not await -> will slow down page loading time
         UpdateRemaTilbudAsync();
         
         var produkterMedTilbud = produktRepository.GetProdukterMedTilbud();
@@ -36,6 +37,19 @@ public class TilbudHandler
                 continue;
             }
 
+            // Remove tilbud if expired
+            if (produkt.TilbudPrice != null)
+            {
+                DateTime dateTimeNow = DateTime.Now;
+                if (dateTimeNow.AddDays(-1) > produkt.TilbudEndingAt)
+                {
+                    produkt.TilbudPrice = null;
+                    produkt.TilbudStartingAt = null;
+                    produkt.TilbudEndingAt = null;
+                }
+            }
+
+            // Get data from Rema API
             var remaResponse = await RemaApi.GetProduktInfo((int)produkt.Varenummer);
 
             if (remaResponse == null)
@@ -43,7 +57,6 @@ public class TilbudHandler
                 continue;
             }
 
-            // Måske der er flere?
             var tilbudPris = remaResponse.Prices.Where(p => p.IsCampaign).FirstOrDefault();
 
             if (tilbudPris != null)
@@ -52,11 +65,9 @@ public class TilbudHandler
                 Console.WriteLine("Tilbud på "+ produkt.Name + " til  " + tilbudPris.Price);
 
                 produkt.TilbudPrice = tilbudPris.Price;
-                //produkt.TilbudStartingAt = tilbudPris.StartingAt;
-                //produkt.TilbudEndingAt = tilbudPris.EndingAt;
+                produkt.TilbudStartingAt = tilbudPris.StartingAt;
+                produkt.TilbudEndingAt = tilbudPris.EndingAt;
             }
-
-            // TODO delete tilbud if gone
 
             // 3. Update produkt
             produkt.ImageUrl = remaResponse.Images.First().Medium;

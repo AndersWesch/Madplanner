@@ -12,8 +12,6 @@
 
 ### TODO
  - Setup Git
- - Delete old tilbud
- - Fix uppercase rema response
 
 ### Features
  - Switch log to count amount of times a Ret has been switched

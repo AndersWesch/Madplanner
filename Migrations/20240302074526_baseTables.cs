@@ -19,6 +19,8 @@ namespace MadPlanner.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Week = table.Column<int>(type: "INTEGER", nullable: false),
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
+                    Price = table.Column<double>(type: "REAL", nullable: false),
+                    Calories = table.Column<double>(type: "REAL", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -110,6 +112,7 @@ namespace MadPlanner.Migrations
                     MadplanId = table.Column<int>(type: "INTEGER", nullable: false),
                     RetId = table.Column<int>(type: "INTEGER", nullable: false),
                     Order = table.Column<int>(type: "INTEGER", nullable: false),
+                    Removed = table.Column<bool>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
