@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Seeders;
@@ -6,10 +7,14 @@ namespace Repositories;
 
 public class RetRepository : BaseRepository<Ret>
 {
-    public Ret GetRandomRet()
+    public Ret GetRandomRet(List<Ret>? excludeRetter)
     {
+        var excludeIds = excludeRetter.Select(r => r.Id).ToList();
+
         // Fetch all Retter entities into memory
-        var allRetter =  DbContext.Retter.ToList();
+        var allRetter = DbContext.Retter
+                        .Where(r => !excludeIds.Contains(r.Id))
+                        .ToList();
 
         // Get a random index within the range of available Retter entities
         var randomIndex = new Random().Next(0, allRetter.Count);

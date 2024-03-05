@@ -70,9 +70,15 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         var ingredienser = ingrediensSeeder.Seed();
         DbContext.Ingredienser.AddRange(ingredienser);
 
-        var madplanSeeder = new MadplanSeeder(retter.Take(5).ToList());
+        var madplanSeeder = new MadplanSeeder();
         var madplaner = madplanSeeder.Seed();
         DbContext.Madplaner.AddRange(madplaner);
+
+        DbContext.SaveChanges();
+
+        var madplanRetSeeder = new MadplanRetSeeder(madplaner);
+        var madplanRetter = madplanRetSeeder.Seed();
+        DbContext.MadplanRetter.AddRange(madplanRetter);
 
         DbContext.SaveChanges();
     }

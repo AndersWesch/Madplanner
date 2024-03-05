@@ -9,6 +9,7 @@ public class ProduktSeeder : ISeeder<Produkt>
         // Kaffe
         // Edermame bønner
         // Skyr
+        // Creme fraiche
 
         return new List<Produkt> {
             new Produkt {

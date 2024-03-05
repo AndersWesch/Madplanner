@@ -11,7 +11,7 @@
     dotnet watch
 
 ### TODO
- - Setup Git
+ - Fix year on create madplan
 
 ### Features
  - Switch log to count amount of times a Ret has been switched

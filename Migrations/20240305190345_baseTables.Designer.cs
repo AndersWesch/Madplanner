@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MadPlanner.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240302074526_baseTables")]
+    [Migration("20240305190345_baseTables")]
     partial class baseTables
     {
         /// <inheritdoc />
