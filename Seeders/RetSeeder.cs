@@ -64,7 +64,8 @@ public class RetSeeder : ISeeder<Ret>
                 Name = "Pasta Bolognese",
                 Description = "Klassisk pasta og kødsovs",
                 Category = Category.Italiensk,
-                Leftovers = true
+                Leftovers = true,
+                SeedKey = "pasta-kodsovs"
             },
             new Ret {
                 Name = "Beluga Bolognese",
@@ -88,7 +89,8 @@ public class RetSeeder : ISeeder<Ret>
                 Name = "Lasagne",
                 Description = "En italiensk klassiker alle elsker",
                 Category = Category.Italiensk,
-                Leftovers = true
+                Leftovers = true,
+                SeedKey = "lasagne"
             },
             new Ret {
                 Name = "Blomkålsrisotto",
@@ -132,7 +134,8 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Panang Karry",
                 Description = "Panang karry med kylling og grøntsager",
-                Category = Category.Asiatisk
+                Category = Category.Asiatisk,
+                SeedKey = "panang"
             },    
             new Ret {
                 Name = "Vietnamesiske forårsruller ",
@@ -144,7 +147,8 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Åses Sandwich",
                 Description = "Hurtigt, nemt og lækkert",
-                Category = Category.Sandwich
+                Category = Category.Sandwich,
+                SeedKey = "aase"
             },
 
             // Salat
@@ -186,12 +190,14 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Tærte",
                 Description = "Tærte med skinke og spinat",
-                Category = Category.Dansk
+                Category = Category.Dansk,
+                SeedKey = "taerte"
             },
             new Ret {
                 Name = "Biksemad",
                 Description = "Alt godt stegt på en pande",
-                Category = Category.Dansk
+                Category = Category.Dansk,
+                SeedKey = "biksemad"
             },
             new Ret {
                 Name = "Tarteletter",
@@ -259,6 +265,7 @@ public class RetSeeder : ISeeder<Ret>
                 Category = Category.Salat,
                 Vegetarian = true,
                 Takeaway = true,
+                SeedKey = "ana"
             },
 
             new Ret {

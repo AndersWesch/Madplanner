@@ -1,5 +1,6 @@
 using Models;
 using Rema1000;
+using Rema1000.ReponseModels;
 using Repositories;
 using SQLitePCL;
 
@@ -26,16 +27,14 @@ public class TilbudHandler
     public async Task UpdateRemaTilbudAsync()
     {
         // 1. Get produkter ready to update tilbud data
-        var produkterToUpdate = produktRepository.GetProdukterToUpdateTilbud(5);
+        var produkterToUpdate = produktRepository.GetProdukterToUpdateTilbud(100);
 
         // 2. Call Rema API
         var RemaApi = new Rema1000Api();
         foreach (var produkt in produkterToUpdate)
         {
             if (produkt.Varenummer == null) 
-            {
                 continue;
-            }
 
             // Remove tilbud if expired
             if (produkt.TilbudPrice != null)
@@ -49,13 +48,19 @@ public class TilbudHandler
                 }
             }
 
-            // Get data from Rema API
-            var remaResponse = await RemaApi.GetProduktInfo((int)produkt.Varenummer);
+            RemaResponse? remaResponse;
 
-            if (remaResponse == null)
-            {
+            try {
+                // Get data from Rema API
+                remaResponse = await RemaApi.GetProduktInfo((int)produkt.Varenummer);
+            } catch {
+                produkt.TilbudDataUpdatedAt = DateTime.Now;
+                produktRepository.Update(produkt);
                 continue;
             }
+            
+            if (remaResponse == null)
+                continue;
 
             var tilbudPris = remaResponse.Prices.Where(p => p.IsCampaign).FirstOrDefault();
 

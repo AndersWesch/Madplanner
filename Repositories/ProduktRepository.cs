@@ -20,9 +20,12 @@ public class ProduktRepository : BaseRepository<Produkt>
 
     public List<Produkt> GetProdukterToUpdateTilbud(int amount)
     {
+        DateTime today = DateTime.Today;
+
         var produkter = DbContext.Produkter
             .Where(p => p.Butik == Butik.Rema1000)
             .Where(p => p.Varenummer != null)
+            .Where(p => (p.TilbudDataUpdatedAt == null) || (p.TilbudDataUpdatedAt.HasValue && p.TilbudDataUpdatedAt.Value.Date < today))
             .OrderBy(p => p.TilbudDataUpdatedAt)
             .Take(amount)
             .ToList();

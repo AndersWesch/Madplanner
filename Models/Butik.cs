@@ -4,6 +4,7 @@ public class Butikker
 {
     public static List<Butik> Alle => 
         new List<Butik> {
+            Butik.Ana,
             Butik.Coop365,
             Butik.Fotex,
             Butik.Kvickly,
@@ -16,6 +17,7 @@ public class Butikker
 
 public enum Butik
 {
+    Ana,
     Coop365,
     Fotex,
     Kvickly,

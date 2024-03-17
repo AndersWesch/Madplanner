@@ -9,6 +9,14 @@ public class MadplanSeeder : ISeeder<Madplan>
     {
         return new List<Madplan> {
             new Madplan {
+                Week = 12,
+                Year = 2024,
+            },
+            new Madplan {
+                Week = 11,
+                Year = 2024,
+            },
+            new Madplan {
                 Week = 10,
                 Year = 2024,
             },
