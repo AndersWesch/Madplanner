@@ -113,6 +113,8 @@ public class MadplanHandler
 
         // TODO make sure to use the correct week and year on year change
         var previousMadplan = madplanRepository.GetByWeekAndYear(week-1, year);
+
+        // TODO Where not removed
         var previousRetter = previousMadplan.MadplanRetter.Select(mr => mr.Ret).ToList();
 
         double totalPrice = 0;

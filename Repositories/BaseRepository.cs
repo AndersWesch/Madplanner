@@ -61,7 +61,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         var produkter = produktSeeder.Seed();
         DbContext.Produkter.AddRange(produkter);
 
-        Console.WriteLine("Rets");
+        Console.WriteLine("Retter");
         var retSeeder = new RetSeeder();
         var retter = retSeeder.Seed();
         DbContext.Retter.AddRange(retter);

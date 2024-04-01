@@ -23,6 +23,8 @@ public class IngrediensSeeder : ISeeder<Ingrediens>
         var pastaSalat = DbContext.Retter.Where(r => r.SeedKey == "pasta-salat").FirstOrDefault();
         var rodKarry = DbContext.Retter.Where(r => r.SeedKey == "rod-karry").First();
         var tortillasOkse = DbContext.Retter.Where(r => r.SeedKey == "tortillas-okse").First();
+        var quinoaSalat = DbContext.Retter.Where(r => r.SeedKey == "quinoa").First();
+        var beluga = DbContext.Retter.Where(r => r.SeedKey == "beluga").First();
         
         // Produkter
         var karolinetomatsuppe = DbContext.Produkter.Where(r => r.SeedKey == "karoline-tomat").FirstOrDefault();
@@ -58,8 +60,72 @@ public class IngrediensSeeder : ISeeder<Ingrediens>
         var revetOst = DbContext.Produkter.Where(r => r.SeedKey == "revet-ost").FirstOrDefault();
         var fusilli = DbContext.Produkter.Where(r => r.SeedKey == "fusilli").First();
         var edermame = DbContext.Produkter.Where(r => r.SeedKey == "edermame").First();
-
+        var rodLog = DbContext.Produkter.Where(r => r.SeedKey == "rod-log").First();
+        var kikaerter = DbContext.Produkter.Where(r => r.SeedKey == "kikaerter").First();
+        var parmasan = DbContext.Produkter.Where(r => r.SeedKey == "parmasan").First();
+        var tortillas = DbContext.Produkter.Where(r => r.SeedKey == "tortillas").First();
+        
         return new List<Ingrediens>{
+            // Beluga Bolognese 
+            new Ingrediens {
+                RetId = beluga.Id,
+                ProduktId = log.Id,
+                Grams = 150,
+            },
+            new Ingrediens {
+                RetId = beluga.Id,
+                ProduktId = fusilli.Id,
+                Grams = 250,
+            },
+            new Ingrediens {
+                RetId = beluga.Id,
+                ProduktId = tomatPurre.Id,
+                Grams = tomatPurre.Grams,
+            },
+            new Ingrediens {
+                RetId = beluga.Id,
+                ProduktId = hakkedeTomater.Id,
+                Grams = hakkedeTomater.Grams,
+            },
+            new Ingrediens {
+                RetId = beluga.Id,
+                ProduktId = parmasan.Id,
+                Grams = 50,
+            },
+            new Ingrediens {
+                RetId = beluga.Id,
+                ProduktId = gulerodder.Id,
+                Grams = 150,
+            },
+            // Beluga linser
+            // Rødvin
+            // Hvidløg
+            // Fløde / MAdlavningsfløde
+
+            // Quinoa Salat 
+            new Ingrediens {
+                RetId = quinoaSalat.Id,
+                ProduktId = rodLog.Id,
+                Grams = 150,
+            },
+            new Ingrediens {
+                RetId = quinoaSalat.Id,
+                ProduktId = kikaerter.Id,
+                Grams = kikaerter.Grams,
+            },
+            new Ingrediens {
+                RetId = quinoaSalat.Id,
+                ProduktId = agurk.Id,
+                Grams = 150,
+            },
+
+            // Quinoa
+            // Feta
+            // Gul peber
+            // Rucula
+            // Persille
+            // Cherry tomater
+
             // Tortilla okse
             new Ingrediens {
                 RetId = tortillasOkse.Id,
@@ -81,6 +147,15 @@ public class IngrediensSeeder : ISeeder<Ingrediens>
                 ProduktId = agurk.Id,
                 Grams = 150,
             },
+            new Ingrediens {
+                RetId = tortillasOkse.Id,
+                ProduktId = tortillas.Id,
+                Grams = 250,
+            },
+
+            // Majs
+            // Chilibeans
+            // Frosen fajita grønt
 
             // Rød Karry
             new Ingrediens {
@@ -329,10 +404,16 @@ public class IngrediensSeeder : ISeeder<Ingrediens>
                 ProduktId = hakketOkse.Id,
                 Grams = 500
             },
-
-            // revet ost
-            // paramsan
-            
+            new Ingrediens {
+                RetId = pastaKodsovs.Id,
+                ProduktId = parmasan.Id,
+                Grams = 50
+            },
+            new Ingrediens {
+                RetId = pastaKodsovs.Id,
+                ProduktId = revetOst.Id,
+                Grams = 100
+            },
         };
     }
 }

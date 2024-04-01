@@ -55,7 +55,7 @@ public class RetSeeder : ISeeder<Ret>
                 SeedKey = "rodpasta"
             },
             new Ret {
-                Name = "La Carbonara ",
+                Name = "La Carbonara",
                 Description = "Enkel og lækker pastaret",
                 Category = Category.Italiensk,
                 PorkBased = true
@@ -71,7 +71,8 @@ public class RetSeeder : ISeeder<Ret>
                 Name = "Beluga Bolognese",
                 Description = "Kødsovs med beluga",
                 Category = Category.Italiensk,
-                Leftovers = true
+                Leftovers = true,
+                SeedKey = "beluga"
             },
             new Ret {
                 Name = "Annes pasta",
@@ -164,8 +165,9 @@ public class RetSeeder : ISeeder<Ret>
             },
             new Ret {
                 Name = "Quinoa salat",
-                Description = "Salat med quinoa og grøntsager",
-                Category = Category.Salat
+                Description = "Quinoa salat med ristede kikærter og fetaost",
+                Category = Category.Salat,
+                SeedKey = "quinoa"
             },
             new Ret {
                 Name = "Pasta salat",

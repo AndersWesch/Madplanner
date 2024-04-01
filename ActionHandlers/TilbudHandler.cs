@@ -26,8 +26,10 @@ public class TilbudHandler
 
     public async Task UpdateRemaTilbudAsync()
     {
+        Console.WriteLine("UpdateRemaTilbudAsync");
+
         // 1. Get produkter ready to update tilbud data
-        var produkterToUpdate = produktRepository.GetProdukterToUpdateTilbud(100);
+        var produkterToUpdate = produktRepository.GetProdukterToUpdateTilbud(20);
 
         // 2. Call Rema API
         var RemaApi = new Rema1000Api();

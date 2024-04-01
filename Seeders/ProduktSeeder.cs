@@ -8,6 +8,11 @@ public class ProduktSeeder : ISeeder<Produkt>
     {
         // Ingefær
         // Hvidløg
+        // Feta
+        // Cherry tomater
+        // Quinoa
+        // Beluga 
+        // Bouillonterning
 
         return new List<Produkt> {
             new Produkt {
@@ -414,6 +419,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 117,
                 Butik = Butik.Rema1000,
                 Varenummer = 100042,
+                SeedKey = "kikaerter"
             },
             new Produkt {
                 Name = "Tomat Pasta",
@@ -473,6 +479,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 299,
                 Butik = Butik.Rema1000,
                 Varenummer = 102831,
+                SeedKey = "tortillas"
             },
             new Produkt {
                 Name = "Rød Karrypasta",
@@ -749,13 +756,14 @@ public class ProduktSeeder : ISeeder<Produkt>
             },
             new Produkt {
                 Name = "Grana Padano",
-                Note = "Paramsan ost i blok",
+                Note = "Parmasan ost i blok",
                 PackingType = PackingType.Pakke,
                 Price = 33.95,
                 Grams = 200,
                 Calories = 398,
                 Butik = Butik.Rema1000,
                 Varenummer = 455418,
+                SeedKey = "parmasan"
             },
             new Produkt {
                 Name = "Serano skinke",
@@ -850,6 +858,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 44,
                 Butik = Butik.Rema1000,
                 Varenummer = 306954,
+                SeedKey = "rod-log"
             },
             new Produkt {
                 Name = "Gulerødder",
