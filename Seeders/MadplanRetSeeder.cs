@@ -14,12 +14,69 @@ public class MadplanRetSeeder : ISeeder<MadplanRet>
 
     public List<MadplanRet> Seed()
     {
+        var madplanUge14 = Madplaner.Where(m => m.Week == 14).First();
+        var madplanUge13 = Madplaner.Where(m => m.Week == 13).First();
         var madplanUge12 = Madplaner.Where(m => m.Week == 12).First();
         var madplanUge11 = Madplaner.Where(m => m.Week == 11).First();
         var madplanUge10 = Madplaner.Where(m => m.Week == 10).First();
         var madplanUge9 = Madplaner.Where(m => m.Week == 9).First();
 
         return new List<MadplanRet> {
+            // Uge 14
+            new MadplanRet {
+                MadplanId = madplanUge14.Id,
+                RetId = 7,
+                Order = 1,
+                Removed = true,  
+            },
+            new MadplanRet {
+                MadplanId = madplanUge14.Id,
+                RetId = 18,
+                Order = 2
+            },
+            new MadplanRet {
+                MadplanId = madplanUge14.Id,
+                RetId = 16,
+                Order = 3
+            },
+            new MadplanRet {
+                MadplanId = madplanUge14.Id,
+                RetId = 9,
+                Order = 4
+            },
+            new MadplanRet {
+                MadplanId = madplanUge14.Id,
+                RetId = 24,
+                Order = 5
+            },
+
+            // Uge 13
+            new MadplanRet {
+                MadplanId = madplanUge13.Id,
+                RetId = 25,
+                Order = 1
+            },
+            new MadplanRet {
+                MadplanId = madplanUge13.Id,
+                RetId = 22,
+                Order = 2
+            },
+            new MadplanRet {
+                MadplanId = madplanUge13.Id,
+                RetId = 40,
+                Order = 3
+            },
+            new MadplanRet {
+                MadplanId = madplanUge13.Id,
+                RetId = 14,
+                Order = 4
+            },
+            new MadplanRet {
+                MadplanId = madplanUge13.Id,
+                RetId = 37,
+                Order = 5
+            },
+
             // Uge 12
             new MadplanRet {
                 MadplanId = madplanUge12.Id,

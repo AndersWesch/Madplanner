@@ -56,26 +56,31 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
     {
         Console.WriteLine("Seeding data");
 
+        Console.WriteLine("Produkter");
         var produktSeeder = new ProduktSeeder();
         var produkter = produktSeeder.Seed();
         DbContext.Produkter.AddRange(produkter);
 
+        Console.WriteLine("Rets");
         var retSeeder = new RetSeeder();
         var retter = retSeeder.Seed();
         DbContext.Retter.AddRange(retter);
 
         DbContext.SaveChanges();
 
+        Console.WriteLine("Ingredienser");
         var ingrediensSeeder = new IngrediensSeeder();
         var ingredienser = ingrediensSeeder.Seed();
         DbContext.Ingredienser.AddRange(ingredienser);
 
+        Console.WriteLine("Madplaner");
         var madplanSeeder = new MadplanSeeder();
         var madplaner = madplanSeeder.Seed();
         DbContext.Madplaner.AddRange(madplaner);
 
         DbContext.SaveChanges();
 
+        Console.WriteLine("MadplanRetter");
         var madplanRetSeeder = new MadplanRetSeeder(madplaner);
         var madplanRetter = madplanRetSeeder.Seed();
         DbContext.MadplanRetter.AddRange(madplanRetter);

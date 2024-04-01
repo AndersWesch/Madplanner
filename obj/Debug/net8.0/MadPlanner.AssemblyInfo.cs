@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MadPlanner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8aef25d706b3ec758ce064bc3b6832c8920a03d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac802b8384c13b0f71aab71dedabd915ea703746")]
 [assembly: System.Reflection.AssemblyProductAttribute("MadPlanner")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MadPlanner")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

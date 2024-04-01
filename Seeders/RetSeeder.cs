@@ -102,29 +102,34 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Tortillas med kylling",
                 Description = "Tortillas pandekager (wrap) med diverse",
-                Category = Category.Mexikansk
+                Category = Category.Mexikansk,
+                SeedKey = "tortillas-kylling"
             },
             new Ret {
                 Name = "Tortillas med falafel",
                 Description = "Tortillas pandekager (wrap) med diverse",
-                Category = Category.Mexikansk
+                Category = Category.Mexikansk,
+                SeedKey = "tortillas-falafel"
             },
             new Ret {
                 Name = "Tortillas med okse",
                 Description = "Tortillas pandekager (wrap) med diverse",
-                Category = Category.Mexikansk
+                Category = Category.Mexikansk,
+                SeedKey = "tortillas-okse"
             },
             new Ret {
                 Name = "Quesadilla",
                 Description = "Stegte Tortillas pandekager med ost",
-                Category = Category.Mexikansk
+                Category = Category.Mexikansk,
+                SeedKey = "quesadilla"
             },
 
             // Asiatisk 
             new Ret {
                 Name = "Rød Karry",
                 Description = "Rød karry baseret på karry pasta og kokosmælk",
-                Category = Category.Asiatisk
+                Category = Category.Asiatisk,
+                SeedKey = "rod-karry"
             },   
             new Ret {
                 Name = "Grøn Karry",
@@ -165,7 +170,8 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Pasta salat",
                 Description = "Pasta salat med kylling",
-                Category = Category.Salat
+                Category = Category.Salat,
+                SeedKey = "pasta-salat"
             },
             new Ret {
                 Name = "Cous Cous salat",

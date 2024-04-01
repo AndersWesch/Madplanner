@@ -20,7 +20,10 @@ public class IngrediensSeeder : ISeeder<Ingrediens>
         var panang = DbContext.Retter.Where(r => r.SeedKey == "panang").FirstOrDefault();
         var biksemad = DbContext.Retter.Where(r => r.SeedKey == "biksemad").FirstOrDefault();
         var taerte = DbContext.Retter.Where(r => r.SeedKey == "taerte").FirstOrDefault();
-
+        var pastaSalat = DbContext.Retter.Where(r => r.SeedKey == "pasta-salat").FirstOrDefault();
+        var rodKarry = DbContext.Retter.Where(r => r.SeedKey == "rod-karry").First();
+        var tortillasOkse = DbContext.Retter.Where(r => r.SeedKey == "tortillas-okse").First();
+        
         // Produkter
         var karolinetomatsuppe = DbContext.Produkter.Where(r => r.SeedKey == "karoline-tomat").FirstOrDefault();
         var suppehorn = DbContext.Produkter.Where(r => r.SeedKey == "suppehorn").FirstOrDefault();
@@ -53,8 +56,66 @@ public class IngrediensSeeder : ISeeder<Ingrediens>
         var skinkeStrimler = DbContext.Produkter.Where(r => r.SeedKey == "skinke-strimler").FirstOrDefault();
         var milk = DbContext.Produkter.Where(r => r.SeedKey == "milk").FirstOrDefault();
         var revetOst = DbContext.Produkter.Where(r => r.SeedKey == "revet-ost").FirstOrDefault();
+        var fusilli = DbContext.Produkter.Where(r => r.SeedKey == "fusilli").First();
+        var edermame = DbContext.Produkter.Where(r => r.SeedKey == "edermame").First();
 
         return new List<Ingrediens>{
+            // Tortilla okse
+            new Ingrediens {
+                RetId = tortillasOkse.Id,
+                ProduktId = spidskaal.Id,
+                Grams = 150,
+            },
+            new Ingrediens {
+                RetId = tortillasOkse.Id,
+                ProduktId = hakketOkse.Id,
+                Grams = hakketOkse.Grams,
+            },
+            new Ingrediens {
+                RetId = tortillasOkse.Id,
+                ProduktId = tomater.Id,
+                Grams = 200,
+            },
+            new Ingrediens {
+                RetId = tortillasOkse.Id,
+                ProduktId = agurk.Id,
+                Grams = 150,
+            },
+
+            // Rød Karry
+            new Ingrediens {
+                RetId = rodKarry.Id,
+                ProduktId = ris.Id,
+                Grams = 300,
+            },
+            new Ingrediens {
+                RetId = rodKarry.Id,
+                ProduktId = wokBlanding.Id,
+                Grams = wokBlanding.Grams,
+            },
+            new Ingrediens {
+                RetId = rodKarry.Id,
+                ProduktId = kokos.Id,
+                Grams = kokos.Grams,
+            },
+            new Ingrediens {
+                RetId = rodKarry.Id,
+                ProduktId = log.Id,
+                Grams = 150,
+            },
+
+            // Pasta salat
+            new Ingrediens {
+                RetId = pastaSalat.Id,
+                ProduktId = fusilli.Id,
+                Grams = 300,
+            },
+            new Ingrediens {
+                RetId = pastaSalat.Id,
+                ProduktId = edermame.Id,
+                Grams = 300,
+            },
+
             // Tærte
             new Ingrediens {
                 RetId = taerte.Id,
