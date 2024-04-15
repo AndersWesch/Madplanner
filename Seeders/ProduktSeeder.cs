@@ -6,15 +6,348 @@ public class ProduktSeeder : ISeeder<Produkt>
 {
     public List<Produkt> Seed()
     {
-        // Ingefær
-        // Hvidløg
-        // Feta
-        // Cherry tomater
-        // Quinoa
-        // Beluga 
-        // Bouillonterning
-
+        Console.WriteLine("ProduktSeeder");
+        
         return new List<Produkt> {
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 455411,
+                SeedKey = "parma-reggiano"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 417096,
+                SeedKey = "grov-hummus"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 417097,
+                SeedKey = "chili-hummus"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 413321,
+                SeedKey = "hummus"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 306381,
+                SeedKey = "snack-peber"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 306447,
+                SeedKey = "rucola"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pose,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 42107,
+                SeedKey = "curly-fries"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 450095,
+                SeedKey = "buko-naturel"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 453041,
+                SeedKey = "philadelphia-original"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 25739,
+                SeedKey = "bakkedal-smor"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 25511,
+                SeedKey = "lurpak-blok"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 25506,
+                SeedKey = "lurpak-smor"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 40847,
+                SeedKey = "vilde-blaabaer"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 400526,
+                SeedKey = "minikoedboller"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 410981,
+                SeedKey = "grillpoelser"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 410980,
+                SeedKey = "frankfurter"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 414524,
+                SeedKey = "poelser-med-ost"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 40378,
+                SeedKey = "fajitablanding"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pakke,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 412936,
+                SeedKey = "hoensesalat"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pose,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 41726,
+                SeedKey = "frosen-avocado"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Karton,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 24015,
+                SeedKey = "vanilje-skyr"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Karton,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 20252,
+                SeedKey = "skovbaer-skyr"
+            },
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Karton,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 24017,
+                SeedKey = "mango-skyr"
+            },
+            new Produkt {
+                Name = "Oksebouillon",
+                Note = "Oksefond",
+                PackingType = PackingType.Pakke,
+                Price = 4.50,
+                Grams = 100,
+                Calories = 256,
+                Butik = Butik.Rema1000,
+                Varenummer = 100375,
+                SeedKey = "oksebouillon"
+            },
+            new Produkt {
+                Name = "Hønsebouillon",
+                Note = "Hønsefond",
+                PackingType = PackingType.Pakke,
+                Price = 4.50,
+                Grams = 100,
+                Calories = 269,
+                Butik = Butik.Rema1000,
+                Varenummer = 100353,
+                SeedKey = "honsebouillon"
+            },
+            new Produkt {
+                Name = "Grøntsagsbouillon",
+                Note = "grøntsgsfond",
+                PackingType = PackingType.Pakke,
+                Price = 4.50,
+                Grams = 100,
+                Calories = 272,
+                Butik = Butik.Rema1000,
+                Varenummer = 100369,
+                SeedKey = "grontsagsbouillon"
+            },
+            new Produkt {
+                Name = "Ingefær",
+                Note = "Rå ingefær",
+                PackingType = PackingType.Pose,
+                Price = 13.00,
+                Grams = 200,
+                Calories = 80,
+                Butik = Butik.Rema1000,
+                Varenummer = 306882,
+                SeedKey = "ingefaer"
+            },
+            new Produkt {
+                Name = "Hvidløg",
+                Note = "Økologisk hvidløg",
+                PackingType = PackingType.Pose,
+                Price = 5.00,
+                Grams = 30,
+                Calories = 160,
+                Butik = Butik.Rema1000,
+                Varenummer = 306950,
+                SeedKey = "hvidlog"
+            },
+            new Produkt {
+                Name = "Salatost i tern",
+                Note = "Økologisk feta",
+                PackingType = PackingType.Pakke,
+                Price = 17.50,
+                Grams = 150,
+                Calories = 276,
+                Butik = Butik.Rema1000,
+                Varenummer = 455649,
+                SeedKey = "salatost-oko"
+            },
+            new Produkt {
+                Name = "Salatost i tern",
+                Note = "feta",
+                PackingType = PackingType.Pakke,
+                Price = 20.95,
+                Grams = 325,
+                Calories = 217,
+                Butik = Butik.Rema1000,
+                Varenummer = 455636,
+                SeedKey = "salatost"
+            },
+            new Produkt {
+                Name = "Cherrytomater",
+                Note = "Økologisk cherryblommetomater",
+                PackingType = PackingType.Pakke,
+                Price = 14.00,
+                Grams = 250,
+                Calories = 18,
+                Butik = Butik.Rema1000,
+                Varenummer = 306178,
+                SeedKey = "cherrytomater"
+            },
+            new Produkt {
+                Name = "Hvid Quinoa",
+                Note = "Økologisk hvid quinoa",
+                PackingType = PackingType.Pose,
+                Price = 19.95,
+                Grams = 400,
+                Calories = 304,
+                Butik = Butik.Rema1000,
+                Varenummer = 91388,
+                SeedKey = "quinoa"
+            },
+            new Produkt {
+                Name = "Beluga linser",
+                Note = "Beluga linser/bønner",
+                PackingType = PackingType.Pose,
+                Price = 39.95,
+                Grams = 400,
+                Calories = 352,
+                Butik = Butik.Lovbjerg,
+                SeedKey = "beluga"
+            },
             new Produkt {
                 Name = "Blåbær Æble Grød",
                 Note = "Baby grød / mos",
@@ -410,6 +743,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 100,
                 Butik = Butik.Rema1000,
                 Varenummer = 107912,
+                SeedKey = "chilibeans"
             },
             new Produkt {
                 Name = "Kikærter Økologisk",
@@ -450,6 +784,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 79,
                 Butik = Butik.Rema1000,
                 Varenummer = 100425,
+                SeedKey = "majs"
             },
             new Produkt {
                 Name = "Aspargessnitter",
@@ -540,7 +875,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 21.5,
                 Grams = 500,
                 Calories = 351,
-                Butik = Butik.Lovbjerg
+                Butik = Butik.Lovbjerg,
+                SeedKey = "tortiglioni"
             },
             new Produkt {
                 Name = "Tortellini",
@@ -549,7 +885,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 24.95,
                 Grams = 500,
                 Calories = 400,
-                Butik = Butik.Coop365
+                Butik = Butik.Coop365,
+                SeedKey = "tortellini"
             },
             new Produkt {
                 Name = "Lasagneplader",
@@ -613,6 +950,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 346,
                 Butik = Butik.Rema1000,
                 Varenummer = 91398,
+                SeedKey = "rode-linser"
             },
             new Produkt {
                 Name = "Tartelet skaller",
@@ -633,6 +971,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 260,
                 Butik = Butik.Rema1000,
                 Varenummer = 66035,
+                SeedKey = "burgerboller"
             },
             new Produkt {
                 Name = "Nudler",
@@ -707,7 +1046,6 @@ public class ProduktSeeder : ISeeder<Produkt>
             },
             new Produkt {
                 Name = "Kyllingebrystfilet",
-                Note = "Karolines Madlavningsfløde 8%",
                 PackingType = PackingType.Pakke,
                 Price = 34.95,
                 Grams = 280,
@@ -724,6 +1062,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 115,
                 Butik = Butik.Rema1000,
                 Varenummer = 21878,
+                SeedKey = "madlavningsflode"
             },
             new Produkt {
                 Name = "Pizzabund",
@@ -788,13 +1127,14 @@ public class ProduktSeeder : ISeeder<Produkt>
                 SeedKey = "egg"
             },
             new Produkt {
-                Name = "Salciccia",
+                Name = "Salsiccia",
                 Note = "Italiensk pølse",
                 PackingType = PackingType.Pakke,
                 Price = 49.95,
                 Grams = 200,
                 Calories = 258,
-                Butik = Butik.Lovbjerg
+                Butik = Butik.Lovbjerg,
+                SeedKey = "salsiccia"
             },
             new Produkt {
                 Name = "Minimælk",
@@ -837,6 +1177,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 497,
                 Butik = Butik.Rema1000,
                 Varenummer = 413313,
+                SeedKey = "pesto-god"
             },
             new Produkt {
                 Name = "Løg",

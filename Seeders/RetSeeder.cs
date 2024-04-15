@@ -49,7 +49,7 @@ public class RetSeeder : ISeeder<Ret>
             // Italiensk
             new Ret {
                 Name = "Rød Pasta",
-                Description = "Rød Pasta med salcicia og rosmarin",
+                Description = "Rød Pasta med salsiccia og rosmarin",
                 Category = Category.Italiensk,
                 PorkBased = true,
                 SeedKey = "rodpasta"
@@ -161,7 +161,8 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Tortellini salat",
                 Description = "Salat med tortellini og spinat",
-                Category = Category.Salat
+                Category = Category.Salat,
+                SeedKey = "tortellini-salat"
             },
             new Ret {
                 Name = "Quinoa salat",
@@ -250,6 +251,7 @@ public class RetSeeder : ISeeder<Ret>
                 Category = Category.Indisk,
                 Leftovers = true,
                 Vegetarian = true,
+                SeedKey = "dhal"
             },
 
             // Spansk
@@ -263,7 +265,8 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Burger",
                 Description = "Burger og fritter",
-                Category = Category.Amerikansk
+                Category = Category.Amerikansk,
+                SeedKey = "burger"
             },
 
             // Takeaway

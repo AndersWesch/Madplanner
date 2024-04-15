@@ -38,6 +38,8 @@ public class TilbudHandler
             if (produkt.Varenummer == null) 
                 continue;
 
+            Console.WriteLine(produkt.Name);
+
             // Remove tilbud if expired
             if (produkt.TilbudPrice != null)
             {
@@ -75,6 +77,21 @@ public class TilbudHandler
                 produkt.TilbudStartingAt = tilbudPris.StartingAt;
                 produkt.TilbudEndingAt = tilbudPris.EndingAt;
             }
+
+            if (produkt.Name == "")
+                produkt.Name = remaResponse.Name;
+
+            if (produkt.Note == null)
+                produkt.Note = remaResponse.Underline;
+
+            if (produkt.Price == 0)
+                produkt.Price = remaResponse.NormalPrice;
+
+            if (produkt.Grams == 0 && remaResponse.Grams != null)
+                produkt.Grams = (int) remaResponse.Grams;
+
+            if (produkt.Calories == 0 && remaResponse.Calories != null)
+                produkt.Calories = (int) remaResponse.Calories;
 
             // 3. Update produkt
             produkt.ImageUrl = remaResponse.Images.First().Medium;
