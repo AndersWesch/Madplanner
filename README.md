@@ -23,6 +23,8 @@
  - Statistics page with the amount of times each dish has been used
  - Cooking time 
  - Produkt page with image and last discount
+ - Ret Gyldig fra og til (season)
+ - Disable ret
 
 Rema 1000 API
 https://cphapp.rema1000.dk/api/v3/products/404899?include=declaration,nutrition_info,declaration,warnings

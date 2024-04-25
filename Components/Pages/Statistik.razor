@@ -1,0 +1,34 @@
+@page "/statistik"
+@rendermode InteractiveServer
+@inject ActionHandlers.MadplanHandler MadplanHandler
+@inject ActionHandlers.RetHandler RetHandler
+
+<PageTitle>Statistik</PageTitle>
+
+<div class="row">
+    <div class="col">
+        Gns Madplan pris @averageMadplanPrice DKK
+    </div>
+    <div class="col">
+        Gns Madplan kcal @averageMadplanCalories kcal
+    </div>
+</div>
+
+@code 
+{
+    private List<Models.Madplan> madplaner = new List<Models.Madplan>();
+    private List<Models.Ret> retter = new List<Models.Ret>();
+    private double averageMadplanPrice = 0;
+    private double averageMadplanCalories = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        madplaner = MadplanHandler.GetAllMadplaner();
+        retter = RetHandler.GetAll();
+
+        // Get average ret pris and kcal
+
+        averageMadplanPrice = Math.Round(madplaner.Sum(x => x.Price) / madplaner.Count, 2);
+        averageMadplanCalories = Math.Round(madplaner.Sum(x => x.Calories) / madplaner.Count, 2);
+    }
+}

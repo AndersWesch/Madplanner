@@ -6,9 +6,17 @@ public class ProduktSeeder : ISeeder<Produkt>
 {
     public List<Produkt> Seed()
     {
-        Console.WriteLine("ProduktSeeder");
-        
         return new List<Produkt> {
+            new Produkt {
+                Name = "",
+                PackingType = PackingType.Pose,
+                Price = 0,
+                Grams = 0,
+                Calories = 0,
+                Butik = Butik.Rema1000,
+                Varenummer = 306712,
+                SeedKey = "frisk-persille"
+            },
             new Produkt {
                 Name = "",
                 PackingType = PackingType.Pakke,
@@ -990,7 +998,8 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Price = 59.95,
                 Grams = 500,
                 Calories = 321,
-                Butik = Butik.Lovbjerg
+                Butik = Butik.Lovbjerg,
+                SeedKey = "falafel"
             },
             new Produkt {
                 Name = "Wok blanding",
@@ -1052,6 +1061,7 @@ public class ProduktSeeder : ISeeder<Produkt>
                 Calories = 95,
                 Butik = Butik.Rema1000,
                 Varenummer = 404997,
+                SeedKey = "kylling-bryst"
             },
             new Produkt {
                 Name = "Madlavningsfløde",

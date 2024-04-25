@@ -32,7 +32,7 @@
                             
                             <p class="mt-3 mb-0" style="font-weight: 300; font-size: 15px;">INGREDIENSER</p>
 
-                            @foreach (var ingrediens in @currentMadplan.MadplanRetter[i].Ret.Ingredienser)
+                            @foreach (var ingrediens in @currentMadplan.MadplanRetter[i].Ret.Ingredienser.OrderByDescending(i => i.Grams).ToList())
                             {
                                 <span style="font-size: 14px; font-weight: 300; margin-left: 5px">- @ingrediens.Grams g @ingrediens.Produkt.Name</span> <br>
                             }

@@ -14,6 +14,7 @@ public class MadplanRetSeeder : ISeeder<MadplanRet>
 
     public List<MadplanRet> Seed()
     {
+        var madplanUge17= Madplaner.Where(m => m.Week == 17).First();
         var madplanUge16 = Madplaner.Where(m => m.Week == 16).First();
         var madplanUge15 = Madplaner.Where(m => m.Week == 15).First();
         var madplanUge14 = Madplaner.Where(m => m.Week == 14).First();
@@ -24,6 +25,33 @@ public class MadplanRetSeeder : ISeeder<MadplanRet>
         var madplanUge9 = Madplaner.Where(m => m.Week == 9).First();
 
         return new List<MadplanRet> {
+            // Uge 17
+            new MadplanRet {
+                MadplanId = madplanUge17.Id,
+                RetId = 25,
+                Order = 1,
+            },
+            new MadplanRet {
+                MadplanId = madplanUge17.Id,
+                RetId = 8,
+                Order = 2
+            },
+            new MadplanRet {
+                MadplanId = madplanUge17.Id,
+                RetId = 27,
+                Order = 3
+            },
+            new MadplanRet {
+                MadplanId = madplanUge17.Id,
+                RetId = 40,
+                Order = 4
+            },
+            new MadplanRet {
+                MadplanId = madplanUge17.Id,
+                RetId = 11,
+                Order = 5,
+            },
+
             // Uge 16
             new MadplanRet {
                 MadplanId = madplanUge16.Id,
