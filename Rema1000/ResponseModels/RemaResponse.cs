@@ -7,7 +7,7 @@ public class RemaResponse
     public List<PriceModel>? Prices { get; set; }
     public List<NutritionInfo>? NutritionInfo { get; set; }
     public List<ImageUrls>? Images { get; set; }
-    public double NormalPrice => (double) Prices.Where(p => !p.IsCampaign).First().Price;
+    public double NormalPrice => Prices == null ? 0 : (double) Prices.First(p => !p.IsCampaign).Price;
     
     public int? Grams {
         get {
@@ -25,7 +25,7 @@ public class RemaResponse
 
     public int? Calories {
         get {
-            if (NutritionInfo.Count == 0) 
+            if (NutritionInfo == null || NutritionInfo.Count == 0) 
             {
                 return null;
             }
@@ -33,6 +33,9 @@ public class RemaResponse
             var energy = NutritionInfo.Where(n => n.Name == "Energi").First();
             // Format: "  2.050 KJ /   497 kcal"
             var energyValue = energy.Value;
+
+            if (energyValue == null)
+                return null;
 
             string[] parts = energyValue.Split('/');
             parts = parts[1].Trim().Split(' ');

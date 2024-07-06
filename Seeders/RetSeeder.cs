@@ -8,8 +8,6 @@ public class RetSeeder : ISeeder<Ret>
     {
         // Minestronesuppe
         // Karry suppe
-        // Retter på grillen
-        // Kyllingelår med rodfrugter i ovnen
 
         return new List<Ret> {
             // Suppe
@@ -19,7 +17,6 @@ public class RetSeeder : ISeeder<Ret>
                 Category = Category.Suppe,
                 Vegetarian = true,
             },
-
             new Ret {
                 Name = "Tomatsuppe",
                 Description = "Tomatsuppe fra Karolines Køkken",
@@ -27,7 +24,6 @@ public class RetSeeder : ISeeder<Ret>
                 Vegetarian = true,
                 SeedKey = "tomatsuppe"
             },
-
             new Ret {
                 Name = "Kartoffel porre suppe",
                 Description = "Grøntsagssuppe god med bacon",
@@ -53,6 +49,13 @@ public class RetSeeder : ISeeder<Ret>
                 Category = Category.Italiensk,
                 PorkBased = true,
                 SeedKey = "rodpasta"
+            },
+            new Ret {
+                Name = "Pasta Pesto",
+                Description = "Pasta Pesto med salsiccia og rucola",
+                Category = Category.Italiensk,
+                PorkBased = true,
+                SeedKey = "pasta-pesto"
             },
             new Ret {
                 Name = "La Carbonara",
@@ -83,6 +86,12 @@ public class RetSeeder : ISeeder<Ret>
             new Ret {
                 Name = "Kartoffelpizza",
                 Description = "Nem pizza med bund fra Netto",
+                Category = Category.Italiensk,
+                Vegetarian = true
+            },
+            new Ret {
+                Name = "Pizza Funghi e Prosciutto",
+                Description = "Pizza med tomatsauce, champignon og skinke",
                 Category = Category.Italiensk,
                 Vegetarian = true
             },
@@ -188,14 +197,31 @@ public class RetSeeder : ISeeder<Ret>
                 Description = "Simpelt pitabrød med kylling og diverse grønt",
                 Category = Category.Andet
             },
-
             new Ret {
                 Name = "Tortellini og pølser",
                 Description = "Børnefavorit",
-                Category = Category.Salat
+                Category = Category.Andet
+            },
+            new Ret {
+                Name = "Tortellini i svampesauce",
+                Description = "Tortellini i en sauce af svampe, spinat og fløde",
+                Category = Category.Dansk,
+                SeedKey = "kyllingiovn"
+            },
+            new Ret {
+                Name = "BBQ Kylling og kartoffelsalat",
+                Description = "BBQ marineret kylling (gerne på grill) med kartoffelsalat",
+                Category = Category.Dansk,
+                SeedKey = "kyllingiovn"
             },
 
             // Dansk
+            new Ret {
+                Name = "Kyllingelår i ovnen",
+                Description = "Ovnstegte kyllinge lår med rodfrugter",
+                Category = Category.Dansk,
+                SeedKey = "kyllingiovn"
+            },
             new Ret {
                 Name = "Tærte",
                 Description = "Tærte med skinke og spinat",

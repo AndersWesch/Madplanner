@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Models;
 
@@ -47,7 +46,7 @@ public class Ret
 
     public string? SeedKey { get; set; }
 
-    public List<MadplanRet> MadplanRetter { get; set; } // Navigation property for the join table
+    public List<MadplanRet>? MadplanRetter { get; set; } // Navigation property for the join table
 
     public double CalculatedPrice 
     {

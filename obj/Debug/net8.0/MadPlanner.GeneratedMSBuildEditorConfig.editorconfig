@@ -30,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/anderswesch/code/MadPlanner/Components/Pages/LogIn.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Mb2dJbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/anderswesch/code/MadPlanner/Components/Pages/ModalConfirm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Nb2RhbENvbmZpcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
-using Seeders;
 
 namespace Database;
 
@@ -11,6 +10,7 @@ public class DatabaseContext : DbContext
     public DbSet<Ingrediens> Ingredienser { get; set; }
     public DbSet<Madplan> Madplaner { get; set; }
     public DbSet<MadplanRet> MadplanRetter { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

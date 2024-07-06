@@ -56,6 +56,11 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
     {
         Console.WriteLine("Seeding data");
 
+        Console.WriteLine("Users");
+        var userSeeder = new UserSeeder();
+        var users = userSeeder.Seed();
+        DbContext.Users.AddRange(users);
+
         Console.WriteLine("Produkter");
         var produktSeeder = new ProduktSeeder();
         var produkter = produktSeeder.Seed();

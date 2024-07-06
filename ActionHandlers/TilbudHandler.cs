@@ -2,7 +2,6 @@ using Models;
 using Rema1000;
 using Rema1000.ReponseModels;
 using Repositories;
-using SQLitePCL;
 
 namespace ActionHandlers;
 
@@ -18,8 +17,8 @@ public class TilbudHandler
     public async Task<List<Produkt>> GetCurrentTilbud()
     {
         // Do not await -> will slow down page loading time
-        UpdateRemaTilbudAsync();
-        
+        _ = UpdateRemaTilbudAsync();
+
         var produkterMedTilbud = produktRepository.GetProdukterMedTilbud();
         return produkterMedTilbud;
     }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6AB0uBzoRfmIyTdSRLYIQN7tBOm4Bt3uO5tffLc8a8k=",
+  "Hash": "MU9bZRjSXiL7U5SI4bbZcwfvtweaKHPhmtXlL6a2tyg=",
   "Source": "MadPlanner",
   "BasePath": "_content/MadPlanner",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.png"
+    },
+    {
+      "Identity": "/Users/anderswesch/code/MadPlanner/wwwroot/js/localStorage.js",
+      "SourceId": "MadPlanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/anderswesch/code/MadPlanner/wwwroot/",
+      "BasePath": "_content/MadPlanner",
+      "RelativePath": "js/localStorage.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/localStorage.js"
     }
   ]
 }

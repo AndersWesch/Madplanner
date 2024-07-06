@@ -122,7 +122,7 @@
 @code {
     private bool showConfirmDelete = false;
     private Models.Madplan? madplanToDelete;
-    private Models.Madplan currentMadplan;
+    private Models.Madplan currentMadplan = new Models.Madplan();
     private List<Models.Madplan> madplaner = new List<Models.Madplan>();
     private List<Models.Dag> dage = Models.Dage.AlleDage;
 

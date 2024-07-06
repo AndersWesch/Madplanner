@@ -8,6 +8,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 // Register your custom services here
+// builder.Services.AddSingleton<AuthHandler>();
 builder.Services.AddSingleton<RetHandler>();
 builder.Services.AddSingleton<ProduktHandler>();
 builder.Services.AddSingleton<MadplanHandler>();

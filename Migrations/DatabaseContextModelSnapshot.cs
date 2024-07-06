@@ -234,6 +234,47 @@ namespace MadPlanner.Migrations
                     b.ToTable("Retter");
                 });
 
+            modelBuilder.Entity("Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnOrder(0);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(2);
+
+                    b.Property<DateTime?>("LastLogin")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(6);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(1);
+
+                    b.Property<string>("Password")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(3);
+
+                    b.Property<Guid?>("Token")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(4);
+
+                    b.Property<DateTime?>("TokenExpiration")
+                        .HasColumnType("TEXT")
+                        .HasColumnOrder(5);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("Models.Ingrediens", b =>
                 {
                     b.HasOne("Models.Produkt", "Produkt")

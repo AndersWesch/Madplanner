@@ -16,6 +16,9 @@
  - Round price in header /retter/id
  - Fix fjern ret skifter uger
  - Error handling long rema response
+ - Login on enter
+ - Auth Service til hådntering af logged in state i systemet (AddScoped)
+ - Tilføj link til retter (til opskrift)
 
 ### Features
  - Switch log to count amount of times a Ret has been switched
@@ -25,6 +28,7 @@
  - Produkt page with image and last discount
  - Ret Gyldig fra og til (season)
  - Disable ret
+ - Filter search på retter og produkter
 
 Rema 1000 API
 https://cphapp.rema1000.dk/api/v3/products/404899?include=declaration,nutrition_info,declaration,warnings

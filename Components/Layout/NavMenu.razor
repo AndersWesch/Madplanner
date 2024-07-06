@@ -1,4 +1,8 @@
-﻿<HeadContent>
+﻿@rendermode InteractiveServer
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+
+<HeadContent>
     <style>
         .underline-on-hover {
             text-decoration: none; /* Remove the default underline */
@@ -17,5 +21,30 @@
         <a class="p-2 text-dark underline-on-hover" href="/produkter">Produkter</a>
         <a class="p-2 text-dark underline-on-hover" href="/tilbud">Tilbud</a>
         <a class="p-2 text-dark underline-on-hover" href="/statistik">Statistik</a>
+        
+        <!-- 
+            <a class="p-2 text-dark underline-on-hover" @onclick="Logout">Logout</a> 
+            <a class="p-2 text-dark underline-on-hover" href="/login">Login</a> 
+        -->
+        
     </nav>
 </div>
+
+@code 
+{
+    //protected override async Task OnInitializedAsync()
+    //{
+        // TODO
+        // await AuthHandler.InitializeAsync();
+    //}  
+
+    private async Task Logout()
+    {
+        Console.WriteLine("Logged out");
+        await JSRuntime.InvokeVoidAsync("localStorageFunctions.removeItem", "authToken");
+        
+        // AuthHandler.Logout();
+
+        Navigation.NavigateTo("/login");
+    }
+}

@@ -93,7 +93,6 @@ public class IngrediensSeeder : ISeeder<Ingrediens>
         return new List<Ingrediens>{
             // Pasta salat
             
-
             // Burger
             new Ingrediens {
                 RetId = burger.Id,

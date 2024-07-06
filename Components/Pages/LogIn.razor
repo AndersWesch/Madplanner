@@ -1,0 +1,43 @@
+<!-- @@page "/login" -->
+
+@rendermode InteractiveServer
+@inject IJSRuntime JSRuntime
+
+@inject NavigationManager Navigation
+
+<PageTitle>Login</PageTitle>
+
+<div class="row justify-content-md-center">
+    <div class="col-sm-3">
+        <div class="form-group">
+            <input @bind="@email" class="m-3 form-control" type="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input @bind="@password" type="password" class="m-3 form-control" placeholder="Password">
+        </div>
+       <button @onclick="Login" style="width: 100px;" class="m-3 btn btn-outline-dark">Login</button>
+    </div>
+</div>
+
+@code 
+{
+    private string email { get; set; }
+    private string password { get; set; }
+
+    private async Task Login()
+    {
+        // TODO
+        var token = "token"; //AuthHandler.Login(email, password);
+
+        if (token != null) 
+        {
+            Console.WriteLine("Logged in");
+            await JSRuntime.InvokeVoidAsync("localStorageFunctions.setItem", "authToken", token);
+
+            Navigation.NavigateTo("/");
+
+        } else {
+            Console.WriteLine("Login failed");
+        }
+    }
+}
