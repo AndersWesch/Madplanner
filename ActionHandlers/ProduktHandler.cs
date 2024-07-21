@@ -7,21 +7,21 @@ namespace ActionHandlers;
 
 public class ProduktHandler
 {
-    private readonly ProduktRepository Repository;
+    private readonly ProduktRepository _produktRepository;
 
-    public ProduktHandler()
+    public ProduktHandler(ProduktRepository produktRepository)
     {
-        Repository = new ProduktRepository();
+        _produktRepository = produktRepository;
     }
 
     public List<Produkt> GetAll()
     {
-        return Repository.GetAll();
+        return _produktRepository.GetAll();
     }
 
     public List<Produkt> GetForCreate(List<int> existingIds, string search, int amount)
     {
-        return Repository.GetForCreate(existingIds, search, amount);
+        return _produktRepository.GetForCreate(existingIds, search, amount);
     }
 
     public Produkt Create(string name, string note, PackingType packingType, Butik butik, double price, int grams, int calories, int? varenummer)
@@ -37,14 +37,14 @@ public class ProduktHandler
             Varenummer = varenummer
         };
 
-        produkt = Repository.Create(produkt);
+        produkt = _produktRepository.Create(produkt);
 
         return produkt;
     }
 
     public void Delete(Produkt produkt)
     {
-        Repository.Delete(produkt);
+        _produktRepository.Delete(produkt);
     }
 
     public async Task<RemaResponse>? GetProduktInfo(int varenummer)

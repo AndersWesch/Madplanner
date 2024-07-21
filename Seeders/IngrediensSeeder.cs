@@ -1,94 +1,98 @@
 using Database;
-using Microsoft.VisualBasic;
 using Models;
 
 namespace Seeders;
 
 public class IngrediensSeeder : ISeeder<Ingrediens>
 {    
+    private DatabaseContext _databaseContext;
+
+    public IngrediensSeeder(DatabaseContext databaseContext)
+    {
+        _databaseContext = databaseContext;
+    }
+
     public List<Ingrediens> Seed()
     {
-        var DbContext = new DatabaseContext();
-
         // Retter
-        var aasesSandwich = DbContext.Retter.Where(r => r.SeedKey == "aase").FirstOrDefault();
-        var ana = DbContext.Retter.Where(r => r.SeedKey == "ana").FirstOrDefault();
-        var beluga = DbContext.Retter.Where(r => r.SeedKey == "beluga").First();
-        var biksemad = DbContext.Retter.Where(r => r.SeedKey == "biksemad").FirstOrDefault();
-        var burger = DbContext.Retter.Where(r => r.SeedKey == "burger").First();
-        var dhal = DbContext.Retter.Where(r => r.SeedKey == "dhal").First();
-        var lasagne = DbContext.Retter.Where(r => r.SeedKey == "lasagne").FirstOrDefault();
-        var panang = DbContext.Retter.Where(r => r.SeedKey == "panang").FirstOrDefault();
-        var pastaKodsovs = DbContext.Retter.Where(r => r.SeedKey == "pasta-kodsovs").FirstOrDefault();
-        var pastaSalat = DbContext.Retter.Where(r => r.SeedKey == "pasta-salat").FirstOrDefault();
-        var quinoaSalat = DbContext.Retter.Where(r => r.SeedKey == "quinoa").First();
-        var rodKarry = DbContext.Retter.Where(r => r.SeedKey == "rod-karry").First();
-        var rodpasta = DbContext.Retter.Where(r => r.SeedKey == "rodpasta").FirstOrDefault();
-        var taerte = DbContext.Retter.Where(r => r.SeedKey == "taerte").FirstOrDefault();
-        var tomatsuppe = DbContext.Retter.Where(r => r.SeedKey == "tomatsuppe").FirstOrDefault();
-        var tortelliniSalat = DbContext.Retter.Where(r => r.SeedKey == "tortellini-salat").First();
-        var tortillasOkse = DbContext.Retter.Where(r => r.SeedKey == "tortillas-okse").First();
-        var tortillasFalafel = DbContext.Retter.Where(r => r.SeedKey == "tortillas-falafel").First();
-        var tortillasKylling = DbContext.Retter.Where(r => r.SeedKey == "tortillas-kylling").First();
+        var aasesSandwich = _databaseContext.Retter.Where(r => r.SeedKey == "aase").FirstOrDefault();
+        var ana = _databaseContext.Retter.Where(r => r.SeedKey == "ana").FirstOrDefault();
+        var beluga = _databaseContext.Retter.Where(r => r.SeedKey == "beluga").First();
+        var biksemad = _databaseContext.Retter.Where(r => r.SeedKey == "biksemad").FirstOrDefault();
+        var burger = _databaseContext.Retter.Where(r => r.SeedKey == "burger").First();
+        var dhal = _databaseContext.Retter.Where(r => r.SeedKey == "dhal").First();
+        var lasagne = _databaseContext.Retter.Where(r => r.SeedKey == "lasagne").FirstOrDefault();
+        var panang = _databaseContext.Retter.Where(r => r.SeedKey == "panang").FirstOrDefault();
+        var pastaKodsovs = _databaseContext.Retter.Where(r => r.SeedKey == "pasta-kodsovs").FirstOrDefault();
+        var pastaSalat = _databaseContext.Retter.Where(r => r.SeedKey == "pasta-salat").FirstOrDefault();
+        var quinoaSalat = _databaseContext.Retter.Where(r => r.SeedKey == "quinoa").First();
+        var rodKarry = _databaseContext.Retter.Where(r => r.SeedKey == "rod-karry").First();
+        var rodpasta = _databaseContext.Retter.Where(r => r.SeedKey == "rodpasta").FirstOrDefault();
+        var taerte = _databaseContext.Retter.Where(r => r.SeedKey == "taerte").FirstOrDefault();
+        var tomatsuppe = _databaseContext.Retter.Where(r => r.SeedKey == "tomatsuppe").FirstOrDefault();
+        var tortelliniSalat = _databaseContext.Retter.Where(r => r.SeedKey == "tortellini-salat").First();
+        var tortillasOkse = _databaseContext.Retter.Where(r => r.SeedKey == "tortillas-okse").First();
+        var tortillasFalafel = _databaseContext.Retter.Where(r => r.SeedKey == "tortillas-falafel").First();
+        var tortillasKylling = _databaseContext.Retter.Where(r => r.SeedKey == "tortillas-kylling").First();
 
         // Produkter
-        var agurk = DbContext.Produkter.Where(r => r.SeedKey == "agurk").FirstOrDefault();
-        var bechamel = DbContext.Produkter.Where(r => r.SeedKey == "bechamel").FirstOrDefault();
-        var billigPesto = DbContext.Produkter.Where(r => r.SeedKey == "billig-pesto").FirstOrDefault();
-        var burgerboller = DbContext.Produkter.Where(r => r.SeedKey == "burgerboller").First();
-        var champignon = DbContext.Produkter.Where(r => r.SeedKey == "champignon").FirstOrDefault();
-        var cherrytomater = DbContext.Produkter.Where(r => r.SeedKey == "cherrytomater").First();
-        var chilibeans = DbContext.Produkter.Where(r => r.SeedKey == "chilibeans").First();
-        var curlyFries = DbContext.Produkter.Where(r => r.SeedKey == "curly-fries").First();
-        var edermame = DbContext.Produkter.Where(r => r.SeedKey == "edermame").First();
-        var egg = DbContext.Produkter.Where(r => r.SeedKey == "egg").FirstOrDefault();
+        var agurk = _databaseContext.Produkter.Where(r => r.SeedKey == "agurk").FirstOrDefault();
+        var bechamel = _databaseContext.Produkter.Where(r => r.SeedKey == "bechamel").FirstOrDefault();
+        var billigPesto = _databaseContext.Produkter.Where(r => r.SeedKey == "billig-pesto").FirstOrDefault();
+        var burgerboller = _databaseContext.Produkter.Where(r => r.SeedKey == "burgerboller").First();
+        var champignon = _databaseContext.Produkter.Where(r => r.SeedKey == "champignon").FirstOrDefault();
+        var cherrytomater = _databaseContext.Produkter.Where(r => r.SeedKey == "cherrytomater").First();
+        var chilibeans = _databaseContext.Produkter.Where(r => r.SeedKey == "chilibeans").First();
+        var curlyFries = _databaseContext.Produkter.Where(r => r.SeedKey == "curly-fries").First();
+        var edermame = _databaseContext.Produkter.Where(r => r.SeedKey == "edermame").First();
+        var egg = _databaseContext.Produkter.Where(r => r.SeedKey == "egg").FirstOrDefault();
 
         
-        var falafel = DbContext.Produkter.Where(r => r.SeedKey == "falafel").First();
-        var fusilli = DbContext.Produkter.Where(r => r.SeedKey == "fusilli").First();
-        var godPesto = DbContext.Produkter.Where(r => r.SeedKey == "pesto-god").First();
-        var grontsagsbouillon = DbContext.Produkter.Where(r => r.SeedKey == "grontsagsbouillon").First();
-        var gulerodder = DbContext.Produkter.Where(r => r.SeedKey == "gulerodder").FirstOrDefault();
-        var hakkedeTomater = DbContext.Produkter.Where(r => r.SeedKey == "hakkede-tomater").FirstOrDefault();
-        var hakketOkse = DbContext.Produkter.Where(r => r.SeedKey == "hakket-okse").FirstOrDefault();
-        var hvidlog = DbContext.Produkter.Where(r => r.SeedKey == "hvidlog").First();
-        var hytteost = DbContext.Produkter.Where(r => r.SeedKey == "hytteost").FirstOrDefault();
-        var ingefaer = DbContext.Produkter.Where(r => r.SeedKey == "ingefaer").First();
-        var karolinetomatsuppe = DbContext.Produkter.Where(r => r.SeedKey == "karoline-tomat").FirstOrDefault();
-        var kartofel = DbContext.Produkter.Where(r => r.SeedKey == "kartofel").FirstOrDefault();
-        var kikaerter = DbContext.Produkter.Where(r => r.SeedKey == "kikaerter").First();
-        var kyllingeBryst = DbContext.Produkter.Where(r => r.SeedKey == "kylling-bryst").FirstOrDefault();
-        var kokos = DbContext.Produkter.Where(r => r.SeedKey == "kokos").FirstOrDefault();
-        var lasagnePlader = DbContext.Produkter.Where(r => r.SeedKey == "lasagne-plader").FirstOrDefault();
-        var log = DbContext.Produkter.Where(r => r.SeedKey == "log").FirstOrDefault();
-        var madlavningsflode = DbContext.Produkter.Where(r => r.SeedKey == "madlavningsflode").First();
-        var majs = DbContext.Produkter.Where(r => r.SeedKey == "majs").First();
-        var milk = DbContext.Produkter.Where(r => r.SeedKey == "milk").FirstOrDefault();
-        var mozarellaBlok = DbContext.Produkter.Where(r => r.SeedKey == "mozarella-blok").FirstOrDefault();
-        var parmasan = DbContext.Produkter.Where(r => r.SeedKey == "parmasan").First();
-        var pita = DbContext.Produkter.Where(r => r.SeedKey == "pita").FirstOrDefault();
-        var polse = DbContext.Produkter.Where(r => r.SeedKey == "polse").FirstOrDefault();
-        var quinoa = DbContext.Produkter.Where(r => r.SeedKey == "quinoa").First();
-        var revetOst = DbContext.Produkter.Where(r => r.SeedKey == "revet-ost").FirstOrDefault();
-        var ris = DbContext.Produkter.Where(r => r.SeedKey == "ris").FirstOrDefault();
-        var rodeLinser = DbContext.Produkter.Where(r => r.SeedKey == "rode-linser").First();
-        var rodLog = DbContext.Produkter.Where(r => r.SeedKey == "rod-log").First();
-        var salatost = DbContext.Produkter.Where(r => r.SeedKey == "salatost").First();
-        var salsiccia = DbContext.Produkter.Where(r => r.SeedKey == "salsiccia").First();
-        var samosa = DbContext.Produkter.Where(r => r.SeedKey == "samosa").FirstOrDefault();
-        var serano = DbContext.Produkter.Where(r => r.SeedKey == "serano").FirstOrDefault();
-        var skinkeStrimler = DbContext.Produkter.Where(r => r.SeedKey == "skinke-strimler").FirstOrDefault();
-        var spidskaal = DbContext.Produkter.Where(r => r.SeedKey == "spidskaal").FirstOrDefault();
-        var spinat = DbContext.Produkter.Where(r => r.SeedKey == "spinat").FirstOrDefault();
-        var storSalat = DbContext.Produkter.Where(r => r.SeedKey == "stor-salat").FirstOrDefault();
-        var suppehorn = DbContext.Produkter.Where(r => r.SeedKey == "suppehorn").FirstOrDefault();
-        var taertedej = DbContext.Produkter.Where(r => r.SeedKey == "taertedej").FirstOrDefault();
-        var tomater = DbContext.Produkter.Where(r => r.SeedKey == "tomater").FirstOrDefault();
-        var tomatPurre = DbContext.Produkter.Where(r => r.SeedKey == "tomat-purre").FirstOrDefault();
-        var tortellini = DbContext.Produkter.Where(r => r.SeedKey == "tortellini").First();
-        var tortiglioni = DbContext.Produkter.Where(r => r.SeedKey == "tortiglioni").First();
-        var tortillas = DbContext.Produkter.Where(r => r.SeedKey == "tortillas").First();
-        var wokBlanding = DbContext.Produkter.Where(r => r.SeedKey == "wok-blanding").FirstOrDefault();
+        var falafel = _databaseContext.Produkter.Where(r => r.SeedKey == "falafel").First();
+        var fusilli = _databaseContext.Produkter.Where(r => r.SeedKey == "fusilli").First();
+        var godPesto = _databaseContext.Produkter.Where(r => r.SeedKey == "pesto-god").First();
+        var grontsagsbouillon = _databaseContext.Produkter.Where(r => r.SeedKey == "grontsagsbouillon").First();
+        var gulerodder = _databaseContext.Produkter.Where(r => r.SeedKey == "gulerodder").FirstOrDefault();
+        var hakkedeTomater = _databaseContext.Produkter.Where(r => r.SeedKey == "hakkede-tomater").FirstOrDefault();
+        var hakketOkse = _databaseContext.Produkter.Where(r => r.SeedKey == "hakket-okse").FirstOrDefault();
+        var hvidlog = _databaseContext.Produkter.Where(r => r.SeedKey == "hvidlog").First();
+        var hytteost = _databaseContext.Produkter.Where(r => r.SeedKey == "hytteost").FirstOrDefault();
+        var ingefaer = _databaseContext.Produkter.Where(r => r.SeedKey == "ingefaer").First();
+        var karolinetomatsuppe = _databaseContext.Produkter.Where(r => r.SeedKey == "karoline-tomat").FirstOrDefault();
+        var kartofel = _databaseContext.Produkter.Where(r => r.SeedKey == "kartofel").FirstOrDefault();
+        var kikaerter = _databaseContext.Produkter.Where(r => r.SeedKey == "kikaerter").First();
+        var kyllingeBryst = _databaseContext.Produkter.Where(r => r.SeedKey == "kylling-bryst").FirstOrDefault();
+        var kokos = _databaseContext.Produkter.Where(r => r.SeedKey == "kokos").FirstOrDefault();
+        var lasagnePlader = _databaseContext.Produkter.Where(r => r.SeedKey == "lasagne-plader").FirstOrDefault();
+        var log = _databaseContext.Produkter.Where(r => r.SeedKey == "log").FirstOrDefault();
+        var madlavningsflode = _databaseContext.Produkter.Where(r => r.SeedKey == "madlavningsflode").First();
+        var majs = _databaseContext.Produkter.Where(r => r.SeedKey == "majs").First();
+        var milk = _databaseContext.Produkter.Where(r => r.SeedKey == "milk").FirstOrDefault();
+        var mozarellaBlok = _databaseContext.Produkter.Where(r => r.SeedKey == "mozarella-blok").FirstOrDefault();
+        var parmasan = _databaseContext.Produkter.Where(r => r.SeedKey == "parmasan").First();
+        var pita = _databaseContext.Produkter.Where(r => r.SeedKey == "pita").FirstOrDefault();
+        var polse = _databaseContext.Produkter.Where(r => r.SeedKey == "polse").FirstOrDefault();
+        var quinoa = _databaseContext.Produkter.Where(r => r.SeedKey == "quinoa").First();
+        var revetOst = _databaseContext.Produkter.Where(r => r.SeedKey == "revet-ost").FirstOrDefault();
+        var ris = _databaseContext.Produkter.Where(r => r.SeedKey == "ris").FirstOrDefault();
+        var rodeLinser = _databaseContext.Produkter.Where(r => r.SeedKey == "rode-linser").First();
+        var rodLog = _databaseContext.Produkter.Where(r => r.SeedKey == "rod-log").First();
+        var salatost = _databaseContext.Produkter.Where(r => r.SeedKey == "salatost").First();
+        var salsiccia = _databaseContext.Produkter.Where(r => r.SeedKey == "salsiccia").First();
+        var samosa = _databaseContext.Produkter.Where(r => r.SeedKey == "samosa").FirstOrDefault();
+        var serano = _databaseContext.Produkter.Where(r => r.SeedKey == "serano").FirstOrDefault();
+        var skinkeStrimler = _databaseContext.Produkter.Where(r => r.SeedKey == "skinke-strimler").FirstOrDefault();
+        var spidskaal = _databaseContext.Produkter.Where(r => r.SeedKey == "spidskaal").FirstOrDefault();
+        var spinat = _databaseContext.Produkter.Where(r => r.SeedKey == "spinat").FirstOrDefault();
+        var storSalat = _databaseContext.Produkter.Where(r => r.SeedKey == "stor-salat").FirstOrDefault();
+        var suppehorn = _databaseContext.Produkter.Where(r => r.SeedKey == "suppehorn").FirstOrDefault();
+        var taertedej = _databaseContext.Produkter.Where(r => r.SeedKey == "taertedej").FirstOrDefault();
+        var tomater = _databaseContext.Produkter.Where(r => r.SeedKey == "tomater").FirstOrDefault();
+        var tomatPurre = _databaseContext.Produkter.Where(r => r.SeedKey == "tomat-purre").FirstOrDefault();
+        var tortellini = _databaseContext.Produkter.Where(r => r.SeedKey == "tortellini").First();
+        var tortiglioni = _databaseContext.Produkter.Where(r => r.SeedKey == "tortiglioni").First();
+        var tortillas = _databaseContext.Produkter.Where(r => r.SeedKey == "tortillas").First();
+        var wokBlanding = _databaseContext.Produkter.Where(r => r.SeedKey == "wok-blanding").FirstOrDefault();
 
         return new List<Ingrediens>{
             // Pasta salat

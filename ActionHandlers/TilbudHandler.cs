@@ -7,11 +7,11 @@ namespace ActionHandlers;
 
 public class TilbudHandler
 {
-    private readonly ProduktRepository produktRepository;
+    private readonly ProduktRepository _produktRepository;
 
-    public TilbudHandler()
+    public TilbudHandler(ProduktRepository produktRepository)
     {
-        produktRepository = new ProduktRepository();
+        _produktRepository = produktRepository;
     }
 
     public async Task<List<Produkt>> GetCurrentTilbud()
@@ -19,7 +19,7 @@ public class TilbudHandler
         // Do not await -> will slow down page loading time
         _ = UpdateRemaTilbudAsync();
 
-        var produkterMedTilbud = produktRepository.GetProdukterMedTilbud();
+        var produkterMedTilbud = _produktRepository.GetProdukterMedTilbud();
         return produkterMedTilbud;
     }
 
@@ -28,7 +28,7 @@ public class TilbudHandler
         Console.WriteLine("UpdateRemaTilbudAsync");
 
         // 1. Get produkter ready to update tilbud data
-        var produkterToUpdate = produktRepository.GetProdukterToUpdateTilbud(20);
+        var produkterToUpdate = _produktRepository.GetProdukterToUpdateTilbud(20);
 
         // 2. Call Rema API
         var RemaApi = new Rema1000Api();
@@ -58,7 +58,7 @@ public class TilbudHandler
                 remaResponse = await RemaApi.GetProduktInfo((int)produkt.Varenummer);
             } catch {
                 produkt.TilbudDataUpdatedAt = DateTime.Now;
-                produktRepository.Update(produkt);
+                _produktRepository.Update(produkt);
                 continue;
             }
             
@@ -95,7 +95,7 @@ public class TilbudHandler
             // 3. Update produkt
             produkt.ImageUrl = remaResponse.Images.First().Medium;
             produkt.TilbudDataUpdatedAt = DateTime.Now;
-            produktRepository.Update(produkt);        
+            _produktRepository.Update(produkt);        
         }
     }
 }

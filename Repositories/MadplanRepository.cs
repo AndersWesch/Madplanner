@@ -1,3 +1,4 @@
+using Database;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -5,9 +6,13 @@ namespace Repositories;
 
 public class MadplanRepository : BaseRepository<Madplan>
 {
+    public MadplanRepository(DatabaseContext dbContext) : base(dbContext)
+    {
+    }
+
     public Madplan? GetByWeekAndYear(int week, int year)
     {
-        var madplan = DbContext.Madplaner
+        var madplan = _databaseContext.Madplaner
             .Where(m => m.Week == week)
             .Where(m => m.Year == year)
             .Include(m => m.MadplanRetter)
@@ -26,28 +31,28 @@ public class MadplanRepository : BaseRepository<Madplan>
 
     public void UpdateMadplanRet(MadplanRet madplanRet)
     {
-        DbContext.SaveChanges();
+        _databaseContext.SaveChanges();
     }
 
     public void AddRet(MadplanRet madplanRet)
     {
         // Relation already exists, no need to add it again
-        if (DbContext.MadplanRetter.Any(mp => mp.RetId == madplanRet.RetId && mp.MadplanId == madplanRet.MadplanId))
+        if (_databaseContext.MadplanRetter.Any(mp => mp.RetId == madplanRet.RetId && mp.MadplanId == madplanRet.MadplanId))
         {
             Console.WriteLine("Relation already exists");
             return;
         }
 
-        DbContext.MadplanRetter.Add(madplanRet);
-        DbContext.SaveChanges();
+        _databaseContext.MadplanRetter.Add(madplanRet);
+        _databaseContext.SaveChanges();
     }
 
     public void DeleteRet(MadplanRet madplanRet)
     {
-        if (DbContext.MadplanRetter.Any(mp => mp.RetId == madplanRet.RetId && mp.MadplanId == madplanRet.MadplanId))
+        if (_databaseContext.MadplanRetter.Any(mp => mp.RetId == madplanRet.RetId && mp.MadplanId == madplanRet.MadplanId))
         {
-            DbContext.MadplanRetter.Remove(madplanRet);
-            DbContext.SaveChanges();
+            _databaseContext.MadplanRetter.Remove(madplanRet);
+            _databaseContext.SaveChanges();
         }
         else {
             Console.WriteLine("No relation found");

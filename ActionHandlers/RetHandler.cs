@@ -5,28 +5,26 @@ namespace ActionHandlers;
 
 public class RetHandler
 {
-    private readonly RetRepository Repository;
-    private readonly IngrediensRepository ingrediensRepository;
+    private readonly RetRepository _retRepository;
 
-    public RetHandler()
+    public RetHandler(RetRepository retRepository)
     {
-        Repository = new RetRepository();
-        ingrediensRepository = new IngrediensRepository();
+        _retRepository = retRepository;
     }
 
     public List<Ret> GetAll()
     {        
-        return Repository.GetAll();
+        return _retRepository.GetAll();
     }
 
     public Ret GetById(int id)
     {
-        return Repository.GetById(id);
+        return _retRepository.GetById(id);
     }
 
     public Ret Update(Ret ret)
     {
-        return Repository.Update(ret);
+        return _retRepository.Update(ret);
     }
 
     public Ret Create(string name, string description, Category category, bool vegetarian, bool porkBased, bool leftovers, bool takeaway)
@@ -41,13 +39,13 @@ public class RetHandler
             Takeaway = takeaway
         };
 
-        ret = Repository.Create(ret);
+        ret = _retRepository.Create(ret);
 
         return ret;
     }
 
     public void Delete(Ret ret)
     {
-        Repository.Delete(ret);
+        _retRepository.Delete(ret);
     }
 }

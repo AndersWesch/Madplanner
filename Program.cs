@@ -1,5 +1,9 @@
 using ActionHandlers;
+using Database;
 using MadPlanner.Components;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,12 +12,29 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 // Register your custom services here
-// builder.Services.AddSingleton<AuthHandler>();
-builder.Services.AddSingleton<RetHandler>();
-builder.Services.AddSingleton<ProduktHandler>();
-builder.Services.AddSingleton<MadplanHandler>();
-builder.Services.AddSingleton<IngrediensHandler>();
-builder.Services.AddSingleton<TilbudHandler>();
+builder.Services.AddScoped<RetHandler>();
+builder.Services.AddScoped<ProduktHandler>();
+builder.Services.AddScoped<MadplanHandler>();
+builder.Services.AddScoped<IngrediensHandler>();
+builder.Services.AddScoped<TilbudHandler>();
+
+// Register your repositories
+builder.Services.AddScoped<IngrediensRepository>();
+builder.Services.AddScoped<MadplanRepository>();
+builder.Services.AddScoped<ProduktRepository>();
+builder.Services.AddScoped<RetRepository>();
+builder.Services.AddScoped<UserRepository>();
+
+// Add DbContext and Identity services
+builder.Services.AddDbContext<DatabaseContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<DatabaseContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
@@ -26,9 +47,12 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+// Add authentication and authorization middleware
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

@@ -6,13 +6,13 @@ namespace ActionHandlers;
 
 public class MadplanHandler
 {
-    private readonly RetRepository retRepository;
-    private readonly MadplanRepository madplanRepository;
+    private readonly RetRepository _retRepository;
+    private readonly MadplanRepository _madplanRepository;
 
-    public MadplanHandler()
+    public MadplanHandler(RetRepository retRepository, MadplanRepository madplanRepository)
     {
-        retRepository = new RetRepository();
-        madplanRepository = new MadplanRepository();
+        _retRepository = retRepository;
+        _madplanRepository = madplanRepository;
     }
 
     public Madplan GetCurrentMadplan()
@@ -20,7 +20,7 @@ public class MadplanHandler
         int week = GetWeekNumber();
         int year = DateTime.Now.Year;
         
-        var currentMadplan = madplanRepository.GetByWeekAndYear(week, year);
+        var currentMadplan = _madplanRepository.GetByWeekAndYear(week, year);
 
         if (currentMadplan == null)
         {
@@ -38,7 +38,7 @@ public class MadplanHandler
             year = DateTime.Now.Year;
         }
 
-        var currentMadplan = madplanRepository.GetByWeekAndYear((int)week, (int)year);
+        var currentMadplan = _madplanRepository.GetByWeekAndYear((int)week, (int)year);
 
         if (currentMadplan == null)
         {
@@ -50,13 +50,13 @@ public class MadplanHandler
 
     public List<Madplan> GetAllMadplaner()
     {
-        return madplanRepository.GetAll().OrderByDescending(mp => mp.Week).ToList();
+        return _madplanRepository.GetAll().OrderByDescending(mp => mp.Week).ToList();
     }
 
     public Madplan Switch(Madplan madplan, MadplanRet madplanRet)
     {
         var currentRetter = madplan.MadplanRetter.Select(mr => mr.Ret).ToList();
-        var newRet = retRepository.GetRandomRet(currentRetter);
+        var newRet = _retRepository.GetRandomRet(currentRetter);
 
         var newMadplanRet = new MadplanRet {
             MadplanId = madplan.Id,
@@ -65,30 +65,30 @@ public class MadplanHandler
         };
 
         // Delete old relation
-        madplanRepository.DeleteRet(madplanRet);
+        _madplanRepository.DeleteRet(madplanRet);
         
         // Create a new relation
-        madplanRepository.AddRet(newMadplanRet);
+        _madplanRepository.AddRet(newMadplanRet);
 
         // Fetch a new instance of madplan
-        madplan = madplanRepository.GetByWeekAndYear(madplan.Week, madplan.Year);
+        madplan = _madplanRepository.GetByWeekAndYear(madplan.Week, madplan.Year);
 
         return madplan;
     }
 
     public void DeleteMadplan(Madplan madplan)
     {
-        madplanRepository.Delete(madplan);
+        _madplanRepository.Delete(madplan);
     }
 
     public Madplan UpdateMadplan(Madplan madplan)
     {
-        return madplanRepository.Update(madplan);
+        return _madplanRepository.Update(madplan);
     }
 
     public Madplan CreateMadplan()
     {
-        var currentMadplaner = madplanRepository.GetAll();
+        var currentMadplaner = _madplanRepository.GetAll();
         var latestMadplan = currentMadplaner.OrderByDescending(m => m.Week).First();
 
         var newMadplan = CreateMadplanByWeekAndYear(latestMadplan.Week+1, latestMadplan.Year);
@@ -98,7 +98,7 @@ public class MadplanHandler
 
     public void UpdateMadplanRet(MadplanRet madplanRet)
     {
-        madplanRepository.UpdateMadplanRet(madplanRet);
+        _madplanRepository.UpdateMadplanRet(madplanRet);
     }
 
     private Madplan CreateMadplanByWeekAndYear(int week, int year)
@@ -109,10 +109,10 @@ public class MadplanHandler
             Year = year
         };
 
-        madplan = madplanRepository.Create(madplan);
+        madplan = _madplanRepository.Create(madplan);
 
         // TODO make sure to use the correct week and year on year change
-        var previousMadplan = madplanRepository.GetByWeekAndYear(week-1, year);
+        var previousMadplan = _madplanRepository.GetByWeekAndYear(week-1, year);
 
         // TODO Where not removed
         var previousRetter = previousMadplan.MadplanRetter.Select(mr => mr.Ret).ToList();
@@ -122,7 +122,7 @@ public class MadplanHandler
 
         for (var i = 0; i < 5; i++)
         {
-            var ret = retRepository.GetRandomRet(previousRetter);
+            var ret = _retRepository.GetRandomRet(previousRetter);
 
             var madplanRet = new MadplanRet {
                 MadplanId = madplan.Id,
@@ -140,12 +140,12 @@ public class MadplanHandler
                 totalCalories += (double)ret.Calories;
             }
             
-            madplanRepository.AddRet(madplanRet);
+            _madplanRepository.AddRet(madplanRet);
         }
 
         madplan.Price = Math.Round(totalPrice, 2);
         madplan.Calories = Math.Round(totalCalories, 2);
-        madplan = madplanRepository.Update(madplan);
+        madplan = _madplanRepository.Update(madplan);
 
         return madplan;
     }

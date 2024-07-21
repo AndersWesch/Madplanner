@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace Database;
 
-public class DatabaseContext : DbContext 
+public class DatabaseContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<Ret> Retter { get; set; }
     public DbSet<Produkt> Produkter { get; set; }
@@ -12,13 +14,14 @@ public class DatabaseContext : DbContext
     public DbSet<MadplanRet> MadplanRetter { get; set; }
     public DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
     {
-        optionsBuilder.UseSqlite("Data Source=mad_planner.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+        
         // Ret <-> Produkt many to many relation (Ingrediens)
         modelBuilder.Entity<Ingrediens>()
             .HasKey(rp => new { rp.RetId, rp.ProduktId });

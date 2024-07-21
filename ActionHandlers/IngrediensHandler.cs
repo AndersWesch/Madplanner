@@ -5,11 +5,11 @@ namespace ActionHandlers;
 
 public class IngrediensHandler
 {
-    private readonly IngrediensRepository Repository;
+    private readonly IngrediensRepository _repository;
 
-    public IngrediensHandler()
+    public IngrediensHandler(IngrediensRepository repository)
     {
-        Repository = new IngrediensRepository();
+        _repository = repository;
     }
 
     public void Create(Ret ret, Produkt produkt, string? note, int grams)
@@ -21,16 +21,16 @@ public class IngrediensHandler
             Grams = grams
         };
 
-        Repository.CreateRelation(ingrediens);
+        _repository.CreateRelation(ingrediens);
     }
 
     public void Remove(Ingrediens ingrediens)
     {
-        Repository.DeleteRelation(ingrediens);
+        _repository.DeleteRelation(ingrediens);
     }
 
     public List<Ingrediens> GetByRetId(int retId)
     {
-        return Repository.GetByRetId(retId);
+        return _repository.GetByRetId(retId);
     }
 }

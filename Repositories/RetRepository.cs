@@ -1,4 +1,5 @@
 using System.Linq;
+using Database;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Seeders;
@@ -7,12 +8,16 @@ namespace Repositories;
 
 public class RetRepository : BaseRepository<Ret>
 {
+    public RetRepository(DatabaseContext dbContext) : base(dbContext)
+    {
+    }
+
     public Ret GetRandomRet(List<Ret>? excludeRetter)
     {
         var excludeIds = excludeRetter.Select(r => r.Id).ToList();
 
         // Fetch all Retter entities into memory
-        var allRetter = DbContext.Retter
+        var allRetter = _databaseContext.Retter
                         .Where(r => !excludeIds.Contains(r.Id))
                         .ToList();
 
@@ -25,7 +30,7 @@ public class RetRepository : BaseRepository<Ret>
 
     public Ret GetWithIngredienser(int id)
     {
-        var ret = DbContext.Retter
+        var ret = _databaseContext.Retter
             .Include(r => r.Ingredienser)
             .ThenInclude(i => i.Produkt)
             .FirstOrDefault(r => r.Id == id);

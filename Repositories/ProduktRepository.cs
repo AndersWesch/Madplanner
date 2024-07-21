@@ -1,12 +1,17 @@
+using Database;
 using Models;
 
 namespace Repositories;
 
 public class ProduktRepository : BaseRepository<Produkt>
 {
+    public ProduktRepository(DatabaseContext dbContext) : base(dbContext)
+    {
+    }
+
     public List<Produkt> GetForCreate(List<int> existingIds, string search, int amount)
     {
-        var produkter = DbContext.Produkter.Where(p => !existingIds.Contains(p.Id));
+        var produkter = _databaseContext.Produkter.Where(p => !existingIds.Contains(p.Id));
 
         if (!string.IsNullOrEmpty(search))
         {
@@ -22,7 +27,7 @@ public class ProduktRepository : BaseRepository<Produkt>
     {
         DateTime today = DateTime.Today;
 
-        var produkter = DbContext.Produkter
+        var produkter = _databaseContext.Produkter
             .Where(p => p.Butik == Butik.Rema1000)
             .Where(p => p.Varenummer != null)
             .Where(p => (p.TilbudDataUpdatedAt == null) || (p.TilbudDataUpdatedAt.HasValue && p.TilbudDataUpdatedAt.Value.Date < today))
@@ -35,7 +40,7 @@ public class ProduktRepository : BaseRepository<Produkt>
 
     public List<Produkt> GetProdukterMedTilbud()
     {
-        var produkter = DbContext.Produkter
+        var produkter = _databaseContext.Produkter
             .Where(p => p.TilbudPrice != null)
             .ToList();
         
